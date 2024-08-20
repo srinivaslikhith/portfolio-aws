@@ -1,0 +1,95 @@
+/* Ensure the page is unscrollable */
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevent scrolling */
+    height: 100%;
+}
+
+/* Ensure the section or container takes full height */
+#home {
+    background-color: black;
+    color: white;
+    padding: 100px 50px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    min-height: 100vh; /* Ensure it fills the viewport height */
+    position: relative; /* Set position relative for absolute children */
+}
+
+/* Flex container to arrange text and image side by side */
+.content {
+    display: flex;
+    width: 100%;
+    max-width: 1200px; /* Optional: Limit maximum width for better layout */
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Style for the text section */
+.text {
+    flex: 1;
+    padding-right: 20px; /* Space between text and image */
+    color: #fff; /* White text color for contrast */
+}
+
+.text h1 {
+    font-size: 2.5rem; /* Larger size for main heading */
+    margin-bottom: 0.5rem; /* Space below the heading */
+}
+
+.text h2 {
+    font-size: 2rem; /* Slightly smaller for subheading */
+    margin-bottom: 0.5rem;
+}
+
+.text h3 {
+    font-size: 1.5rem; /* Smaller size for the additional text */
+    color: #ddd; /* Light gray color for secondary text */
+}
+
+/* Style for the image section */
+.image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Position SVG in the bottom-right corner and ensure it covers the corner */
+.bottom-right {
+    position: fixed;
+    margin-bottom: 0;
+    margin-right: 0;
+    width: 400px; /* Adjust width as needed */
+    height: 400px; /* Adjust height as needed */
+    background: url('../images/home_page1.svg') no-repeat center center;
+    background-size: cover; /* Ensure the SVG covers the area */
+    z-index: -1; /* Ensure it stays behind other content */
+}
+
+
+.text p {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    color: #ddd; /* Light gray color for text */
+}
+
+.download-button {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #507c9b; /* Button color */
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+}
+
+.download-button:hover {
+    background-color: #405e7c; /* Darker shade on hover */
+}

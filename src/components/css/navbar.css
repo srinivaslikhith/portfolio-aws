@@ -1,0 +1,41 @@
+/* navbar.css */
+
+nav {
+    background: linear-gradient(to right, #e9a24ba5, #507c9b); /* Match home page gradient */
+    color: white;
+    padding: 20px 40px; /* Increase padding for more height */
+    text-align: center;
+    border-radius: 8px; /* Match the rounded corners */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Match the box-shadow */
+    position: fixed; /* Fix the navbar at the top */
+    width: 100%; /* Full width */
+    top: 0; /* Align to the top */
+    left: 0; /* Align to the left */
+    z-index: 1000; /* Ensure it stays above other content */
+  }
+  
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Use flexbox to align items */
+    justify-content: center; /* Center align items */
+  }
+  
+  nav li {
+    margin: 0 30px; /* Add more space between links */
+  }
+  
+  nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.5em; /* Increase font size */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+  }
+  
+  nav a:hover {
+    font-size: 1.9em; /* Increase font size on hover */
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3); /* Slight shadow on hover */
+  }
+  

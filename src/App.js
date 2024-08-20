@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Switch } from 'wouter';
+import Home from './components/js/home';
+import About from './components/js/about';
+import Projects from './components/js/projects';
+import Contact from './components/js/contact';
+import Navbar from './components/js/navbar';
+import Footer from './components/js/footer'; // Import Footer
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Navbar />
+      <Switch>
+        <Route path='/' component={Home} />
+        <Route path='/about' component={About} />
+        <Route path='/projects' component={Projects} />
+        <Route path='/contact' component={Contact} />
+      </Switch>
+      <Footer /> {/* Add Footer component */}
     </div>
   );
 }
