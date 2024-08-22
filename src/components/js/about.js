@@ -1,6 +1,5 @@
-// src/components/js/about.js
 import React from 'react';
-import '../css/about.css'; // Import the specific stylesheet for About page
+import '../css/about.css'; // Import the specific stylesheet for the About page
 
 // Import all skill icons
 import jsIcon from '../images/js.svg';
@@ -20,37 +19,27 @@ import springIcon from '../images/springboot.svg';
 import ngnixIcon from '../images/ngnix.svg';
 import kafkaIcon from '../images/kafka.svg';
 
-
-
-
-
-
-
-
 // Create a mapping of skills to icons
 const skillIcons = {
   JavaScript: jsIcon,
   Python: pyIcon,
   Java: javaIcon,
-  html: htmlIcon,
-  sql: sqlIcon,
-  react: reactIcon,
-  aws: awsIcon,
-  docker: dockerIcon,
-  jenkins: jenkinsIcon,
-  git: gitIcon,
-  kubernetes: kubIcon,
-  redis: redisIcon,
-  kafka: kafkaIcon,
-  ngnix: ngnixIcon,
-  django: djangoIcon,
-  springboot: springIcon
-  // Add more skills and their icons here
+  HTML: htmlIcon,
+  SQL: sqlIcon,
+  React: reactIcon,
+  AWS: awsIcon,
+  Docker: dockerIcon,
+  Jenkins: jenkinsIcon,
+  Git: gitIcon,
+  Kubernetes: kubIcon,
+  Redis: redisIcon,
+  Kafka: kafkaIcon,
+  NGINX: ngnixIcon,
+  Django: djangoIcon,
+  SpringBoot: springIcon
 };
 
 function About() {
-  const [hoveredIndex, setHoveredIndex] = React.useState(null);
-
   const timelineItems = [
     {
       title: "Stony Brook University",
@@ -92,25 +81,17 @@ function About() {
   return (
     <section id="about">
       <div className="timeline-container">
-        <h1>About Me</h1>
-        <h2>Education and Experience Timeline</h2>
+        <div className="timeline-heading-container">
+          <h2 className="about-heading">Education and Experience Timeline</h2>
+        </div>
         <div className="timeline">
           {timelineItems.map((item, index) => (
-            <div
-              key={index}
-              className="timeline-item"
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-            >
+            <div key={index} className="timeline-item">
               <div className="timeline-content">
                 <h3>{item.title}</h3>
                 <p>{item.period}</p>
               </div>
-              <div
-                className={`timeline-details ${
-                  hoveredIndex === index ? 'visible' : ''
-                }`}
-              >
+              <div className="timeline-details">
                 <ul>
                   {item.details.map((detail, i) => (
                     <li key={i}>{detail}</li>
@@ -123,12 +104,15 @@ function About() {
       </div>
 
       <div className="content-container">
-        <h2>Technical Skills</h2>
-
+        <h2 className="about-heading">Ambitions & Abilities</h2>
+        <p className="about-text">
+          Welcome to my portfolio! I am passionate about technology and have a strong background in computer science. My expertise lies in full-stack development, and I have worked on several innovative projects that leverage modern technologies to solve real-world problems. I believe in continuous learning and strive to stay updated with the latest trends in the tech industry.
+        </p>
         <div className="skill-icons">
           {Object.entries(skillIcons).map(([skill, icon], index) => (
             <div className="skill-icon" key={index}>
               <img src={icon} alt={skill} />
+              <div className="skill-tooltip">{skill}</div>
             </div>
           ))}
         </div>

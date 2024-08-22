@@ -1,0 +1,86 @@
+/* General styles for the projects section */
+#projects {
+    padding: 20px;
+    background-color: #000; /* Black background for contrast */
+    color: #fff; /* White text color for contrast */
+    position: relative; /* Relative positioning for the dimming effect */
+  }
+  
+  .projects-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .projects-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .project-card {
+    position: relative;
+    width: calc(33.333% - 20px); /* Three columns with gap adjustment */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .project-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: opacity 0.3s ease;
+  }
+  
+  .project-details {
+    padding: 20px;
+    background: #222; /* Dark background for the details */
+    border-top: 1px solid #333; /* Subtle border for separation */
+  }
+  
+  .project-title {
+    font-size: 1.5rem;
+    color: #ff6600; /* Accent color for the title */
+  }
+  
+  .project-description {
+    font-size: 1rem;
+    color: #e0e0e0; /* Light gray color for description */
+    margin: 10px 0;
+  }
+  
+  .project-link {
+    color: #ff6600; /* Accent color for the link */
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .project-card:hover {
+    transform: scale(1.05); /* Slightly enlarge the card on hover */
+    z-index: 10; /* Ensure the enlarged card is above others */
+  }
+  
+  .project-card:hover img {
+    opacity: 0.5; /* Dim the image on hover */
+  }
+  
+  /* Background dimming effect */
+  #projects::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    opacity: 0;
+    pointer-events: none; /* Allow clicks through the dimmed background */
+    transition: opacity 0.3s ease;
+    z-index: 1; /* Position behind project cards */
+  }
+  
+  .project-card:hover ~ #projects::before {
+    opacity: 1; /* Show the dimmed background on card hover */
+  }
+  
