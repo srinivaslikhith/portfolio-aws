@@ -1,95 +1,108 @@
-/* Ensure the page is unscrollable */
-html, body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden; /* Prevent scrolling */
-    height: 100%;
-}
-
-/* Ensure the section or container takes full height */
+/* General styles for the home section */
 #home {
-    background-color: black;
-    color: white;
-    padding: 100px 50px;
-    text-align: center;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    min-height: 100vh; /* Ensure it fills the viewport height */
-    position: relative; /* Set position relative for absolute children */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 0 20px;
+    box-sizing: border-box;
+    background-color: #000; /* Black background */
+    color: #fff; /* White text color */
 }
 
-/* Flex container to arrange text and image side by side */
 .content {
     display: flex;
-    width: 100%;
-    max-width: 1200px; /* Optional: Limit maximum width for better layout */
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
 }
 
-/* Style for the text section */
 .text {
     flex: 1;
-    padding-right: 20px; /* Space between text and image */
-    color: #fff; /* White text color for contrast */
+    text-align: center;
+    position: relative; /* For positioning the line */
+    padding: 20px; /* Padding for better spacing */
+}
+
+.moving-phrase {
+    position: relative; /* Position relative to allow line placement */
+    padding-top: 20px; /* Space above the phrase */
+}
+
+.line {
+    position: absolute;
+    top: 50%; /* Center the line above the moving phrase */
+    left: 0;
+    width: 100%;
+    height: 5px; /* Height of the line */
+    background-color: #ff6600; /* Orange color for the line */
+    border-radius: 2px; /* Slight rounding of the line */
+    transform: translateY(-50%); /* Move the line up by half its height */
 }
 
 .text h1 {
-    font-size: 2.5rem; /* Larger size for main heading */
-    margin-bottom: 0.5rem; /* Space below the heading */
+    font-size: 3rem;
+    margin-bottom: 10px;
 }
 
 .text h2 {
-    font-size: 2rem; /* Slightly smaller for subheading */
-    margin-bottom: 0.5rem;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
 }
 
 .text h3 {
-    font-size: 1.5rem; /* Smaller size for the additional text */
-    color: #ddd; /* Light gray color for secondary text */
+    font-size: 2rem;
+    margin-bottom: 20px;
 }
-
-/* Style for the image section */
-.image {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Position SVG in the bottom-right corner and ensure it covers the corner */
-.bottom-right {
-    position: fixed;
-    margin-bottom: 0;
-    margin-right: 0;
-    width: 400px; /* Adjust width as needed */
-    height: 400px; /* Adjust height as needed */
-    background: url('../images/home_page1.svg') no-repeat center center;
-    background-size: cover; /* Ensure the SVG covers the area */
-    z-index: -1; /* Ensure it stays behind other content */
-}
-
 
 .text p {
     font-size: 1.2rem;
-    margin-top: 1rem;
-    color: #ddd; /* Light gray color for text */
+    margin-bottom: 20px;
 }
 
 .download-button {
     display: inline-block;
-    margin-top: 1rem;
     padding: 10px 20px;
-    font-size: 1rem;
-    color: #fff;
-    background-color: #507c9b; /* Button color */
+    font-size: 1.2rem;
+    color: white;
+    background-color: #007bff;
     border: none;
     border-radius: 5px;
     text-decoration: none;
-    text-align: center;
-    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .download-button:hover {
-    background-color: #405e7c; /* Darker shade on hover */
+    background-color: #0056b3;
+}
+
+.image {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.image svg {
+    width: 80%;
+    max-width: 500px;
+    height: auto;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column; /* Stack text and image vertically on smaller screens */
+        text-align: center; /* Center-align text for smaller screens */
+    }
+
+    .image {
+        justify-content: center; /* Center image on smaller screens */
+        margin-top: 20px; /* Space between text and image */
+    }
+
+    .line {
+        height: 3px; /* Adjust height for smaller screens */
+    }
 }

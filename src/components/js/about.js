@@ -50,14 +50,6 @@ function About() {
       ],
     },
     {
-      title: "Vellore Institute of Technology",
-      period: "July 2018 – May 2022",
-      details: [
-        "Bachelor’s in Computer Science",
-        "Coursework: Operating Systems, Data Structures, Object-Oriented Programming, Java, Computer Networks, AI",
-      ],
-    },
-    {
       title: "Software Engineer 1 - Loconav",
       period: "June 2022 – July 2023",
       details: [
@@ -74,6 +66,14 @@ function About() {
         "Built APIs and web applications for real-time vehicle data tracking.",
         "Developed a Traffic Sign Detector using MobileNetV2 and Python.",
         "Integrated applications with monitoring tools such as Elastic APM, Bugsnag, and SonarQube.",
+      ],
+    },
+    {
+      title: "Vellore Institute of Technology",
+      period: "July 2018 – May 2022",
+      details: [
+        "Bachelor’s in Computer Science",
+        "Coursework: Operating Systems, Data Structures, Object-Oriented Programming, Java, Computer Networks, AI",
       ],
     },
   ];
@@ -106,7 +106,7 @@ function About() {
       <div className="content-container">
         <h2 className="about-heading">Ambitions & Abilities</h2>
         <p className="about-text">
-          Welcome to my portfolio! I am passionate about technology and have a strong background in computer science. My expertise lies in full-stack development, and I have worked on several innovative projects that leverage modern technologies to solve real-world problems. I believe in continuous learning and strive to stay updated with the latest trends in the tech industry.
+        During my time as a software engineer at LocoNav, I worked on developing and maintaining web applications and microservices using Ruby on Rails, Django, and gRPC. I joined LocoNav as a trainee in January 2022, after completing my bachelor's degree in computer science from Vellore Institute of Technology, and became a full-time engineer in June 2022. I have over two years of work experience in the software industry, and I am passionate about creating innovative and scalable solutions. I am currently pursuing my master's degree in computer science from Stony Brook University, where I am learning Systems, data science, and cloud computing. My goal is to enhance my skills and knowledge in these fields. I am a team player, a problem solver, and a lifelong learner, and I value quality, efficiency, and customer satisfaction in my work.
         </p>
         <div className="skill-icons">
           {Object.entries(skillIcons).map(([skill, icon], index) => (

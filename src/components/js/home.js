@@ -25,8 +25,10 @@ function Home() {
                 <div className="text">
                     <h1>Hi There!</h1>
                     <h2>I am Srinivas Likhith</h2>
-                    <h3>{currentPhrase}</h3>
-                    <br></br>
+                    <div className="line"></div> {/* Line above the moving phrase */}
+                    <div className="moving-phrase">
+                        <h3>{currentPhrase}</h3>
+                    </div>
                     <p>Feel free to download my resume to learn more about my background and skills.</p>
                     <a href="https://drive.google.com/file/d/1w3YYCBRY9CO300vmsnY9clnSgCtaJFW9/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="download-button">Download Resume</a>
                 </div>
@@ -34,7 +36,6 @@ function Home() {
                     <HomePageSVG />
                 </div>
             </div>
-            <div className="bottom-right"></div>
         </section>
     );
 }
