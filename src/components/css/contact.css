@@ -146,6 +146,7 @@ html, body {
     .contact-container {
         flex-direction: column; /* Stack photo and text vertically */
         text-align: center; /* Center text */
+        padding: 10px; /* Reduce padding */
     }
 
     .profile-image {

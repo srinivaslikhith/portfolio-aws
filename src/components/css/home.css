@@ -18,6 +18,7 @@
     width: 100%;
     max-width: 1200px;
     flex-wrap: wrap; /* Enable wrapping for smaller screens */
+    text-align: center; /* Center-align text */
 }
 
 .text {
@@ -111,7 +112,12 @@
     height: auto;
 }
 
+/* Responsive Styles */
 @media (max-width: 768px) {
+    #home {
+        margin-top: 70px; /* Adjust top margin for medium screens */
+    }
+
     .text h1 {
         font-size: 2.5rem;
     }
@@ -126,6 +132,37 @@
 
     .download-button {
         font-size: 1rem;
+    }
+
+    .image {
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .content {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    #home {
+        margin-top: 60px; /* Further adjust top margin for small screens */
+    }
+
+    .text h1 {
+        font-size: 2rem;
+    }
+
+    .text h2 {
+        font-size: 1.8rem;
+    }
+
+    .text h3 {
+        font-size: 1.3rem;
+    }
+
+    .download-button {
+        font-size: 0.9rem;
     }
 
     .image {
