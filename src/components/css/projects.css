@@ -12,6 +12,7 @@ html, body {
     background-color: #000; /* Black background for contrast */
     color: #fff; /* White text color for contrast */
     position: relative; /* Relative positioning for the dimming effect */
+    padding-top: 80px; /* Adjust this value based on the height of your fixed navbar */
 }
 
 .projects-container {

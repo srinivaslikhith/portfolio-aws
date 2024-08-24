@@ -1,4 +1,5 @@
-/* General styles for the home section */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
+
 #home {
     display: flex;
     flex-direction: column;
@@ -7,39 +8,21 @@
     height: 100vh;
     padding: 0 20px;
     box-sizing: border-box;
-    background-color: #000; /* Black background */
-    color: #fff; /* White text color */
+    margin-top: 80px; /* Space to prevent overlap with navbar */
 }
 
 .content {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     width: 100%;
     max-width: 1200px;
+    flex-wrap: wrap; /* Enable wrapping for smaller screens */
 }
 
 .text {
-    flex: 1;
     text-align: center;
-    position: relative; /* For positioning the line */
-    padding: 20px; /* Padding for better spacing */
-}
-
-.moving-phrase {
-    position: relative; /* Position relative to allow line placement */
-    padding-top: 20px; /* Space above the phrase */
-}
-
-.line {
-    position: absolute;
-    top: 50%; /* Center the line above the moving phrase */
-    left: 0;
-    width: 100%;
-    height: 5px; /* Height of the line */
-    background-color: #ff6600; /* Orange color for the line */
-    border-radius: 2px; /* Slight rounding of the line */
-    transform: translateY(-50%); /* Move the line up by half its height */
+    flex: 1;
 }
 
 .text h1 {
@@ -52,9 +35,45 @@
     margin-bottom: 10px;
 }
 
-.text h3 {
+.moving-phrase-container {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    width: 100%;
+    max-width: 500px; /* Adjust width as needed */
+    height: 60px; /* Height of the rectangular box */
+    margin: 20px auto;
+    box-sizing: border-box;
+    border: 2px solid #ff6600; /* Orange border */
+    border-radius: 8px; /* Rounded corners */
+    background-color: #222; /* Dark background for contrast */
+}
+
+.moving-phrase {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    animation: scroll-text 8s linear infinite;
+}
+
+.moving-phrase h3 {
+    display: inline;
     font-size: 2rem;
-    margin-bottom: 20px;
+    margin: 0;
+    color: #fff;
+    padding: 0 20px; /* Space between phrases */
+    font-family: 'Roboto Mono', monospace; /* Futuristic font */
+    font-style: italic; /* Slanted text */
+}
+
+/* Animation for continuous scrolling text */
+@keyframes scroll-text {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
 }
 
 .text p {
@@ -82,6 +101,8 @@
     flex: 1;
     display: flex;
     justify-content: flex-end;
+    align-items: center; /* Center the image vertically */
+    margin-top: 20px; /* Add margin for spacing */
 }
 
 .image svg {
@@ -90,19 +111,29 @@
     height: auto;
 }
 
-/* Responsive Styles */
 @media (max-width: 768px) {
-    .content {
-        flex-direction: column; /* Stack text and image vertically on smaller screens */
-        text-align: center; /* Center-align text for smaller screens */
+    .text h1 {
+        font-size: 2.5rem;
+    }
+
+    .text h2 {
+        font-size: 2rem;
+    }
+
+    .text h3 {
+        font-size: 1.5rem;
+    }
+
+    .download-button {
+        font-size: 1rem;
     }
 
     .image {
-        justify-content: center; /* Center image on smaller screens */
-        margin-top: 20px; /* Space between text and image */
+        justify-content: center;
+        margin-top: 20px;
     }
 
-    .line {
-        height: 3px; /* Adjust height for smaller screens */
+    .content {
+        flex-direction: column;
     }
 }

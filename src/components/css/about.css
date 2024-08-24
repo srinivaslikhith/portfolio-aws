@@ -14,7 +14,6 @@ html, body {
     flex-wrap: wrap; /* Wrap items for responsiveness */
     padding: 20px;
     box-sizing: border-box;
-    height: auto; /* Allow height to adjust based on content */
 }
 
 /* Timeline container */
@@ -23,7 +22,6 @@ html, body {
     padding-right: 20px;
     margin-top: 35px;
     overflow-y: auto; /* Allow vertical scrolling */
-    height: 100vh; /* Full viewport height */
     box-sizing: border-box; /* Include padding and border in width/height calculations */
 }
 
@@ -95,13 +93,63 @@ html, body {
     margin-bottom: 10px;
 }
 
+/* Enhanced Ambitions & Abilities section */
+.content-container {
+    position: relative; /* For absolute positioning of the background graphic */
+    padding: 20px;
+    background: #111; /* Dark background for contrast */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow effect */
+    margin-top: 20px;
+}
+
+.about-heading {
+    color: #ff6600; /* Accent color for the heading */
+    margin-bottom: 20px;
+    font-size: 2.5em; /* Larger font size */
+    font-weight: bold;
+    text-align: center; /* Center-align heading */
+    position: relative;
+    padding-bottom: 10px; /* Add space below heading */
+}
+
+.about-heading::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px; /* Underline width */
+    height: 5px; /* Underline height */
+    background: #ff6600; /* Underline color */
+    border-radius: 2px; /* Rounded corners for underline */
+}
+
+/* Enhanced Ambitions & Abilities text */
+.about-text {
+    font-size: 1.2rem; /* Slightly larger font size for readability */
+    line-height: 1.6; /* Increased line height for better readability */
+    color: #e0e0e0; /* Light gray color for text */
+    text-align: center; /* Center-align text */
+    max-width: 800px; /* Maximum width for text container */
+    margin: 0 auto; /* Center-align container */
+    padding: 20px; /* Padding around text */
+    background-color: #222; /* Dark background for contrast */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    margin-bottom: 20px; /* Space below the text container */
+}
+
 /* Skill Icons */
 .skill-icons {
     display: flex;
     flex-wrap: wrap;
     gap: 20px; /* Space between icons */
+    justify-content: center; /* Center-align icons */
+    position: relative; /* For positioning skill names */
 }
 
+/* Skill icon styling */
 .skill-icons .skill-icon {
     width: 80px;
     height: 80px;
@@ -115,6 +163,22 @@ html, body {
     transition: all 0.3s ease; /* Smooth transition for hover effect */
 }
 
+/* Rotating animation */
+@keyframes rotateClockwise {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+.skill-icons .skill-icon {
+    animation: rotateClockwise 2s linear, rotateCounterClockwise 2s linear; /* Rotate clockwise and then counterclockwise */
+}
+
+/* Skill icon image styling */
 .skill-icons .skill-icon img {
     width: 40px; /* Adjust size as needed */
     height: 40px; /* Adjust size as needed */
@@ -128,6 +192,9 @@ html, body {
     white-space: nowrap;
     font-size: 12px;
     color: #fff;
+    background: #333; /* Dark background for tooltip */
+    padding: 5px;
+    border-radius: 5px; /* Rounded corners for tooltip */
     transform: translateX(-100%);
     transition: all 0.3s ease;
     opacity: 0;
@@ -145,23 +212,24 @@ html, body {
     transform: translateX(-200%); /* Slide the icon completely out of view */
 }
 
-.about-heading {
-    color: #ff6600; /* Accent color for the heading */
-    margin-bottom: 10px;
-    font-size: 2em;
-    font-weight: bold;
-}
+/* Mobile view adjustments */
+@media (max-width: 768px) {
+    #about {
+        flex-direction: column; /* Stack sections vertically on mobile */
+    }
 
-.about-text {
-    font-size: 1.2rem; /* Slightly larger font size for readability */
-    line-height: 1.6; /* Increased line height for better readability */
-    color: #e0e0e0; /* Light gray color for text */
-    text-align: center; /* Center-align text */
-    max-width: 800px; /* Maximum width for text container */
-    margin: 0 auto; /* Center-align container */
-    padding: 20px; /* Padding around text */
-    background-color: #222; /* Dark background for contrast */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
-    margin-bottom: 20px; /* Space below the text container */
+    .timeline-container,
+    .content-container {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+
+    .content-container {
+        margin-top: 20px; /* Space between sections on mobile */
+    }
+
+    .skill-icons .skill-icon {
+        width: 60px; /* Adjust size for mobile */
+        height: 60px; /* Adjust size for mobile */
+    }
 }
