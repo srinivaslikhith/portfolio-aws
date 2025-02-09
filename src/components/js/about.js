@@ -44,7 +44,7 @@ function About() {
 
   const toggleItem = (index) => {
     setExpandedItems(prev => {
-      const newSet = new Set(prev);
+      const newSet = new Set(prev || []);
       if (newSet.has(index)) {
         newSet.delete(index);
       } else {
