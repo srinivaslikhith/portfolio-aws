@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../css/about.css'; // Import the specific stylesheet for the About page
+import '../css/about.css';
 
 // Import all skill icons
 import jsIcon from '../images/js.svg';
@@ -40,17 +40,15 @@ const skillIcons = {
 };
 
 function About() {
-  const [expandedItems, setExpandedItems] = useState(new Set());
+  const [expandedItems, setExpandedItems] = useState([]);
 
   const toggleItem = (index) => {
     setExpandedItems((prev) => {
-      const newSet = new Set(prev); // Create a new Set (immutability)
-      if (newSet.has(index)) {
-        newSet.delete(index);
+      if (prev.includes(index)) {
+        return prev.filter((item) => item !== index); // Remove the index if it exists
       } else {
-        newSet.add(index);
+        return [...prev, index]; // Add the index if it doesn't exist
       }
-      return newSet;
     });
   };
 
@@ -101,7 +99,7 @@ function About() {
             {timelineItems.map((item, index) => (
               <div 
                 key={index} 
-                className={`timeline-item ${expandedItems.has(index) ? 'expanded' : ''}`}
+                className={`timeline-item ${expandedItems.includes(index) ? 'expanded' : ''}`}
                 onClick={() => toggleItem(index)}
               >
                 <div className="timeline-content">
@@ -109,7 +107,7 @@ function About() {
                     <h3>{item.title}</h3>
                     <span className="period">{item.period}</span>
                     <span className="expand-icon">
-                      {expandedItems.has(index) ? '−' : '+'}
+                      {expandedItems.includes(index) ? '−' : '+'}
                     </span>
                   </div>
                   <ul className="timeline-details">
