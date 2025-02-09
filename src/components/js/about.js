@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useReducer } from 'react';
 import '../css/about.css';
 
 // Import all skill icons
@@ -39,17 +39,19 @@ const skillIcons = {
   SpringBoot: springIcon
 };
 
+const toggleReducer = (state, action) => {
+  return state.includes(action.index)
+    ? state.filter((item) => item !== action.index)
+    : [...state, action.index];
+};
+
+
 function About() {
-  const [expandedItems, setExpandedItems] = useState([]);
+  const [expandedItems, dispatch] = useReducer(toggleReducer, []);
+  
 
   const toggleItem = (index) => {
-    setExpandedItems((prev) => {
-      if (prev.includes(index)) {
-        return prev.filter((item) => item !== index); // Remove the index if it exists
-      } else {
-        return [...prev, index]; // Add the index if it doesn't exist
-      }
-    });
+    dispatch({ index });
   };
 
   const timelineItems = [
