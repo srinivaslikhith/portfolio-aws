@@ -6,6 +6,46 @@ import clusterImage from '../images/bigdata.jpg';
 import bankImage from '../images/bank.webp';
 import blockchainImage from '../images/bchain.webp';
 
+
+// Import all skill icons
+import jsIcon from '../images/js.svg';
+import pyIcon from '../images/python.svg';
+import javaIcon from '../images/java.svg';
+import sqlIcon from '../images/sql.svg';
+import htmlIcon from '../images/html.svg';
+import dockerIcon from '../images/docker.svg';
+import jenkinsIcon from '../images/jenkins.svg';
+import gitIcon from '../images/git.svg';
+import reactIcon from '../images/react.svg';
+import awsIcon from '../images/aws.svg';
+import kubIcon from '../images/kubernetes.svg';
+import redisIcon from '../images/redis.svg';
+import djangoIcon from '../images/django.svg';
+import springIcon from '../images/springboot.svg';
+import ngnixIcon from '../images/ngnix.svg';
+import kafkaIcon from '../images/kafka.svg';
+
+// Create a mapping of skills to icons
+const skillIcons = {
+  JavaScript: jsIcon,
+  Python: pyIcon,
+  Java: javaIcon,
+  HTML: htmlIcon,
+  SQL: sqlIcon,
+  React: reactIcon,
+  AWS: awsIcon,
+  Docker: dockerIcon,
+  Jenkins: jenkinsIcon,
+  Git: gitIcon,
+  Kubernetes: kubIcon,
+  Redis: redisIcon,
+  Kafka: kafkaIcon,
+  NGINX: ngnixIcon,
+  Django: djangoIcon,
+  SpringBoot: springIcon,
+};
+
+
 const projects = [
   {
     title: 'Byzantine Fault-Tolerant Transactions',
@@ -80,6 +120,19 @@ function Projects() {
             </div>
           ))}
         </div>
+      </div>
+
+      {/* Skills Section */}
+      <div className="skills-section">
+          <h2 className="section-title">{'<Skills />'}</h2>
+          <div className="skills-grid">
+            {Object.entries(skillIcons).map(([skill, icon]) => (
+              <div key={skill} className="skill-item">
+                <img src={icon} alt={skill} className="skill-icon" />
+                <span className="skill-name">{skill}</span>
+              </div>
+            ))}
+          </div>
       </div>
     </section>
   );

@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React from 'react';
 import '../css/about.css';
 
 // Import all skill icons
@@ -36,58 +36,44 @@ const skillIcons = {
   Kafka: kafkaIcon,
   NGINX: ngnixIcon,
   Django: djangoIcon,
-  SpringBoot: springIcon
+  SpringBoot: springIcon,
 };
-
-const toggleReducer = (state, action) => {
-  return state.includes(action.index)
-    ? state.filter((item) => item !== action.index)
-    : [...state, action.index];
-};
-
 
 function About() {
-  const [expandedItems, dispatch] = useReducer(toggleReducer, []);
-  
-
-  const toggleItem = (index) => {
-    dispatch({ index });
-  };
-
   const timelineItems = [
     {
-      title: "Stony Brook University",
-      period: "Aug. 2023 – May 2025",
+      title: 'Stony Brook University',
+      period: 'Aug. 2023 – May 2025',
       details: [
-        "Masters in Computer Science",
-        "Coursework: Distributed Systems, Database Systems, Advanced Algorithms, Visualization",
+        'Masters in Computer Science',
+        'Coursework: Distributed Systems, Database Systems, Advanced Algorithms, Visualization',
       ],
     },
     {
-      title: "Software Engineer 1 - Loconav",
-      period: "June 2022 – July 2023",
+      title: 'Software Engineer 1 - Loconav',
+      period: 'June 2022 – July 2023',
       details: [
-        "Developed an autonomous command management system for dashcams using Celery-beat, WebSockets, Redis, and Kafka.",
-        "Developed an Over-the-Air (OTA) update system with a UI for managing package versions.",
-        "Contributed to a live streaming system with React and backend integration with Nginx and HLS.",
-        "Developed a version-based configuration management system using React, Celery, and Kafka.",
+        'Developed an autonomous command management system for dashcams using Celery-beat, WebSockets, Redis, and Kafka.',
+        'Developed an Over-the-Air (OTA) update system with a UI for managing package versions.',
+        'Contributed to a live streaming system with React and backend integration with Nginx and HLS.',
+        'Developed a version-based configuration management system using React, Celery, and Kafka.',
       ],
     },
     {
-      title: "Backend Software Intern - Loconav",
-      period: "Dec 2021 – June 2022",
+      title: 'Backend Software Intern - Loconav',
+      period: 'Dec. 2021 – June 2022',
       details: [
-        "Built APIs and web applications for real-time vehicle data tracking.",
-        "Developed a Traffic Sign Detector using MobileNetV2 and Python.",
-        "Integrated applications with monitoring tools such as Elastic APM, Bugsnag, and SonarQube.",
+        'Built APIs and web applications for real-time vehicle data tracking.',
+        'Developed a Traffic Sign Detector using MobileNetV2 and Python.',
+        'Integrated applications with monitoring tools such as Elastic APM, Bugsnag, and SonarQube.',
       ],
     },
     {
-      title: "Vellore Institute of Technology",
-      period: "July 2018 – May 2022",
+      title: 'Vellore Institute of Technology',
+      period: 'July 2018 – May 2022',
       details: [
         "Bachelor’s in Computer Science",
-        "Coursework: Operating Systems, Data Structures, Object-Oriented Programming, Java, Computer Networks, AI",
+        'Coursework: Operating Systems, Data Structures, Object-Oriented Programming, Java, Computer Networks, AI',
       ],
     },
   ];
@@ -96,21 +82,14 @@ function About() {
     <section id="about">
       <div className="about-container">
         <div className="timeline-section">
-          <h2 className="section-title">{"<Education & Experience />"}</h2>
+          <h2 className="section-title">{'<Education & Experience />'}</h2>
           <div className="timeline">
             {timelineItems.map((item, index) => (
-              <div 
-                key={index} 
-                className={`timeline-item ${expandedItems.includes(index) ? 'expanded' : ''}`}
-                onClick={() => toggleItem(index)}
-              >
+              <div key={index} className="timeline-item">
                 <div className="timeline-content">
                   <div className="timeline-header">
                     <h3>{item.title}</h3>
                     <span className="period">{item.period}</span>
-                    <span className="expand-icon">
-                      {expandedItems.includes(index) ? '−' : '+'}
-                    </span>
                   </div>
                   <ul className="timeline-details">
                     {item.details.map((detail, i) => (
@@ -123,20 +102,12 @@ function About() {
           </div>
         </div>
 
-        <div className="about-section">
-          <h2 className="section-title">{"<About Me />"}</h2>
-          <div className="about-content">
-            <p className="about-text">
-              During my time as a software engineer at LocoNav, I worked on developing and maintaining web applications and microservices using Ruby on Rails, Django, and gRPC. I joined LocoNav as a trainee in January 2022, after completing my bachelor's degree in computer science from Vellore Institute of Technology, and became a full-time engineer in June 2022. I have over two years of work experience in the software industry, and I am passionate about creating innovative and scalable solutions. I am currently pursuing my master's degree in computer science from Stony Brook University, where I am learning Systems, data science, and cloud computing. My goal is to enhance my skills and knowledge in these fields. I am a team player, a problem solver, and a lifelong learner, and I value quality, efficiency, and customer satisfaction in my work.
-            </p>
-          </div>
-        </div>
-
+        {/* Skills Section */}
         <div className="skills-section">
-          <h2 className="section-title">{"<Tech Stack />"}</h2>
+          <h2 className="section-title">{'<Skills />'}</h2>
           <div className="skills-grid">
-            {Object.entries(skillIcons).map(([skill, icon], index) => (
-              <div className="skill-item" key={index}>
+            {Object.entries(skillIcons).map(([skill, icon]) => (
+              <div key={skill} className="skill-item">
                 <img src={icon} alt={skill} className="skill-icon" />
                 <span className="skill-name">{skill}</span>
               </div>

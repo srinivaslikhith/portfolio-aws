@@ -14,11 +14,11 @@ function Navbar() {
             {"< Home />"}
           </Link>
         </li>
-        <li>
+        {/* <li>
           <Link href="/about" className={location === '/about' ? 'active' : ''}>
             {"< About />"}
           </Link>
-        </li>
+        </li> */}
         <li>
           <Link href="/projects" className={location === '/projects' ? 'active' : ''}>
             {"< Projects />"}
