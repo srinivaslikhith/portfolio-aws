@@ -1,185 +1,198 @@
-html, body {
-    height: 100%;
-    margin: 0;
-    background-color: #000; /* Black background */
-    color: #fff; /* White text color */
-}
-
 #contact {
-    background-color: #000; /* Black background for consistency */
-    color: #fff; /* White text color for contrast */
-    padding: 40px 20px;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    min-height: 100vh;
+    padding: 80px 10px 30px;
     box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    margin-top: 80px; /* Ensure it's below the navbar */
-}
-
-.contact-container {
-    display: flex;
-    flex-direction: row; /* Align items in a row */
-    align-items: flex-start; /* Align items to the start */
-    justify-content: space-between; /* Space out the items */
-    background-color: #222; /* Dark background for the container */
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow effect */
-    max-width: 1200px; /* Max width for the container */
-    width: 100%;
-    gap: 20px; /* Space between the photo and text */
-    margin: 0 auto; /* Center container horizontally */
-}
-
-.profile-image {
-    flex: 1;
-    max-width: 500px; /* Maximum width of the profile image */
-    margin-right: 20px; /* Space between image and text */
-}
-
-.profile-image img {
-    width: 100%;
-    height: auto; /* Ensure the image maintains its aspect ratio */
-    border-radius: 0; /* Remove border radius to display image fully */
-}
-
-.contact-info {
-    flex: 1; /* Allow the text to take up equal space */
-    background: linear-gradient(to bottom right, #333, #222); /* Gradient background */
-    padding: 20px;
-    border-radius: 10px;
-    border: 2px solid #ff6600; /* Orange border */
-}
-
-.contact-info h1 {
-    font-size: 2.5rem; /* Larger font size for the heading */
-    color: #ff6600; /* Orange color for the heading */
-    margin-bottom: 10px;
-    font-family: 'Roboto', sans-serif; /* Modern font */
-}
-
-.contact-info p {
-    font-size: 1.2rem; /* Slightly larger font size */
-    line-height: 1.6;
-    margin-bottom: 20px;
-    font-family: 'Open Sans', sans-serif; /* Clean font */
-}
-
-.contact-info ul {
-    list-style-type: none; /* Remove default list styling */
-    padding: 0;
-    font-size: 1.1rem;
-}
-
-.contact-info li {
-    margin-bottom: 10px; /* Space between list items */
-}
-
-.contact-info a {
-    color: #ff6600; /* Orange color for links */
-    text-decoration: none; /* Remove underline from links */
-    font-weight: bold;
-}
-
-.contact-info a:hover {
-    text-decoration: underline;
-}
-
-.contact-form {
+  }
+  
+  .contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .section-title {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 2rem;
+    color: #64ffda;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  .contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 2rem;
+    border: 1px solid rgba(100, 255, 218, 0.1);
+  }
+  
+  .contact-left {
     display: flex;
     flex-direction: column;
+    gap: 1.5rem; /* Reduced from 2rem */
+  }
+  
+  .profile-image-container {
     width: 100%;
-    max-width: 500px; /* Set max width for the form */
-    margin-top: 20px;
-    padding: 20px;
-    background: linear-gradient(to bottom right, #333, #444); /* Gradient background for form */
-    border-radius: 10px;
-    border: 1px solid #444;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect for form */
-}
-
-.contact-form label {
-    margin-bottom: 5px;
-    font-weight: bold;
-    font-family: 'Open Sans', sans-serif; /* Clean font */
-    color: #ff6600; /* Orange color for labels */
-}
-
-.contact-form input, 
-.contact-form textarea {
-    padding: 12px;
-    border-radius: 5px;
-    border: 1px solid #555;
-    background-color: #333; /* Dark background for input fields */
+    max-height: 300px; /* Added max-height */
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(100, 255, 218, 0.2);
+  }
+  
+  .profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Makes image cover the container */
+    display: block;
+    transition: transform 0.3s ease;
+  }
+  
+  .profile-image:hover {
+    transform: scale(1.02);
+  }
+  
+  .contact-links {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 1.25rem; /* Reduced from 1.5rem */
+    border-radius: 8px;
+    border: 1px solid rgba(100, 255, 218, 0.1);
+  }
+  
+  .contact-links h3 {
+    font-family: 'Roboto Mono', monospace;
+    color: #64ffda;
+    margin-bottom: 1rem; /* Reduced from 1.5rem */
+    font-size: 1.2rem;
+  }
+  
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem; /* Reduced from 1rem */
+  }
+  
+  .contact-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem; /* Reduced from 0.5rem */
+  }
+  
+  .contact-label {
+    font-family: 'Roboto Mono', monospace;
+    color: #64ffda;
+    font-size: 0.9rem;
+  }
+  
+  .contact-item a {
     color: #fff;
-    margin-bottom: 15px;
-    font-size: 1rem;
-    transition: border-color 0.3s ease, background-color 0.3s ease;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .contact-item a:hover {
+    color: #64ffda;
+  }
+  
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid rgba(100, 255, 218, 0.1);
+    /* Remove or adjust the height property */
+    height: auto;
 }
-
-.contact-form input:focus, 
-.contact-form textarea:focus {
-    border-color: #ff6600; /* Orange border on focus */
-    background-color: #444; /* Slightly lighter background on focus */
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .form-group label {
+    font-family: 'Roboto Mono', monospace;
+    color: #64ffda;
+    font-size: 0.9rem;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(100, 255, 218, 0.2);
+    border-radius: 4px;
+    padding: 0.75rem;
+    color: #fff;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+  }
+  
+  .form-group textarea {
+    min-height: 120px; /* Reduced from 150px */
+    resize: vertical;
+  }
+  
+  .form-group input:focus,
+  .form-group textarea:focus {
     outline: none;
-}
-
-.contact-form button {
-    padding: 12px 24px;
-    border: none;
-    border-radius: 5px;
-    background-color: #ff6600; /* Orange color for the button */
-    color: #fff;
-    font-size: 1.1rem;
+    border-color: #64ffda;
+  }
+  
+  .submit-btn {
+    background-color: transparent;
+    color: #64ffda;
+    border: 1px solid #64ffda;
+    padding: 0.75rem 1.5rem;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1rem;
+    border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.contact-form button:hover {
-    background-color: #e65c00; /* Darker shade on hover */
-    transform: scale(1.05); /* Slightly enlarge button on hover */
-}
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-    .contact-container {
-        flex-direction: column; /* Stack photo and text vertically */
-        text-align: center; /* Center text */
-        padding: 10px; /* Reduce padding */
+    transition: all 0.3s ease;
+    margin-top: 117px;
+  }
+  
+  .submit-btn:hover {
+    background-color: rgba(100, 255, 218, 0.1);
+    transform: translateY(-2px);
+  }
+  
+  @media (max-width: 768px) {
+    .contact-content {
+      grid-template-columns: 1fr;
     }
-
-    .profile-image {
-        max-width: 100%; /* Make image responsive */
-        margin: 0 0 20px 0; /* Space below the image */
+  
+    .section-title {
+      font-size: 1.75rem;
     }
-
-    .contact-info {
-        width: 100%; /* Full width on smaller screens */
+  
+    .profile-image-container {
+      max-height: 250px; /* Reduced for mobile */
     }
-
+  
     .contact-form {
-        width: 100%; /* Full width on smaller screens */
+      padding: 1.5rem;
     }
-}
-
-@media (max-width: 480px) {
-    .contact-info h1 {
-        font-size: 2rem; /* Adjust heading size for small screens */
+  }
+  
+  @media (max-width: 480px) {
+    .section-title {
+      font-size: 1.5rem;
     }
-
-    .contact-info p {
-        font-size: 1rem; /* Adjust paragraph size for small screens */
+  
+    .contact-links h3 {
+      font-size: 1.1rem;
     }
-
-    .contact-info ul {
-        font-size: 1rem; /* Adjust list size for small screens */
+  
+    .profile-image-container {
+      max-height: 200px; /* Further reduced for smaller screens */
     }
-
-    .contact-form label, 
-    .contact-form input, 
-    .contact-form textarea,
-    .contact-form button {
-        font-size: 0.9rem; /* Adjust font size for small screens */
+  
+    .submit-btn {
+      width: 100%;
     }
-}
+  }

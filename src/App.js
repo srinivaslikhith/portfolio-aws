@@ -5,6 +5,7 @@ import Projects from './components/js/projects';
 import Contact from './components/js/contact';
 import Navbar from './components/js/navbar';
 import Footer from './components/js/footer'; // Import Footer
+import React from 'react';
 
 function App() {
   return (
@@ -16,7 +17,6 @@ function App() {
         <Route path='/projects' component={Projects} />
         <Route path='/contact' component={Contact} />
       </Switch>
-      <Footer /> {/* Add Footer component */}
     </div>
   );
 }

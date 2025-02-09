@@ -1,17 +1,19 @@
-/* Apply McLaren theme colors */
+/* navbar.css */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
+
 nav {
-  background: linear-gradient(to right, #ff7f00, #000000); /* McLaren theme */
-  color: white;
+  background-color: rgba(26, 26, 26, 0.95); /* Matches home background with slight transparency */
+  color: #ffffff;
   padding: 20px 40px;
   text-align: center;
-  border-radius: 8px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   position: fixed;
   width: 100%;
   top: 0;
   left: 0;
   z-index: 1000;
-  box-sizing: border-box; /* Ensure padding does not affect width */
+  box-sizing: border-box;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(100, 255, 218, 0.1); /* Subtle cyan border */
 }
 
 nav ul {
@@ -20,66 +22,70 @@ nav ul {
   padding: 0;
   display: flex;
   justify-content: center;
+  gap: 3rem;
 }
 
 nav li {
-  margin: 0 30px;
+  margin: 0;
   position: relative;
 }
 
 nav a {
-  color: white;
+  color: #ffffff;
   text-decoration: none;
-  font-weight: bold;
-  font-size: 1.5em;
-  transition: color 0.3s ease; /* Smooth color transition */
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+  padding: 0.5rem 1rem;
+  position: relative;
+}
+
+nav a:hover {
+  color: #64ffda; /* Cyan accent color */
 }
 
 nav a.active {
-  color: #ff7f00; /* Selected page color */
+  color: #64ffda;
 }
 
 nav a::after {
   content: "";
-  display: block;
-  height: 4px;
-  background-color: #ff7f00; /* McLaren orange for the underline */
-  width: 0;
-  transition: width 0.3s ease;
   position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #64ffda;
+  transition: width 0.3s ease;
 }
 
+nav a:hover::after,
 nav a.active::after {
   width: 100%;
 }
 
-nav a:hover::after {
-  width: 100%; /* Underline effect on hover */
-}
-
+/* Responsive styles */
 @media (max-width: 768px) {
   nav {
-      padding: 15px 20px;
+    padding: 15px 20px;
   }
 
   nav ul {
-      flex-direction: row;
-  }
-
-  nav li {
-      margin: 10px 0;
+    gap: 1.5rem;
   }
 
   nav a {
-      font-size: 1.2em;
+    font-size: 1rem;
   }
 }
 
 @media (max-width: 480px) {
+  nav ul {
+    gap: 1rem;
+  }
+
   nav a {
-      font-size: 1em; /* Smaller font size for very small screens */
+    font-size: 0.9rem;
+    padding: 0.3rem 0.6rem;
   }
 }

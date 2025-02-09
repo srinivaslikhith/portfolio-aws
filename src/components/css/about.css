@@ -1,235 +1,263 @@
-/* Ensure the body and html take full height */
-html, body {
-    height: 100%;
-    margin: 0;
-    background-color: #000; /* Black background */
-    color: #fff; /* White text color for contrast */
-    overflow-x: hidden; /* Prevent horizontal scrolling */
-}
+/* about.css */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
 
-/* Main container for the about section */
 #about {
-    display: flex;
-    flex-direction: row; /* Arrange items horizontally */
-    flex-wrap: wrap; /* Wrap items for responsiveness */
-    padding: 20px;
-    box-sizing: border-box;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  min-height: 100vh;
+  padding: 100px 20px 40px;
+  box-sizing: border-box;
 }
 
-/* Timeline container */
-.timeline-container {
-    flex: 1;
-    padding-right: 20px;
-    margin-top: 35px;
-    overflow-y: auto; /* Allow vertical scrolling */
-    box-sizing: border-box; /* Include padding and border in width/height calculations */
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
 }
 
-/* Content container */
-.content-container {
-    flex: 1;
-    padding-left: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Center content vertically */
-    max-width: 100%; /* Ensure content fits within container */
-    box-sizing: border-box; /* Include padding and border in width/height calculations */
+.section-title {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 2rem;
+  color: #64ffda;
+  margin-bottom: 2rem;
+  text-align: center;
 }
 
-/* Timeline styling */
+/* Timeline Styles */
 .timeline {
-    position: relative;
-    padding: 20px 0;
-    margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .timeline-item {
-    position: relative;
-    margin: 20px 0;
-    padding: 20px;
-    background: #333; /* Dark background for timeline items */
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-    cursor: pointer;
+  border-left: 2px solid #64ffda;
+  padding-left: 2rem;
+  position: relative;
+  padding-bottom: 2rem;
 }
 
 .timeline-item::before {
-    display: none; /* Hide the dot */
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: 0;
+  width: 14px;
+  height: 14px;
+  background-color: #64ffda;
+  border-radius: 50%;
 }
 
-.timeline-content h3 {
-    margin-top: 0;
-    font-size: 18px;
+.timeline-item {
+    border-left: 2px solid #64ffda;
+    padding-left: 2rem;
+    position: relative;
+    padding-bottom: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    position: relative;
+    padding-right: 30px; /* Add padding to make room for the icon */
+  }
+  
+.expand-icon {
+  position: absolute;
+  right: 0;
+  top: 8px; /* Add some top padding */
+  font-size: 1.5rem;
+  color: #64ffda;
+  font-family: 'Roboto Mono', monospace;
+  line-height: 1;
+  width: 24px; /* Give it a fixed width */
+  height: 24px; /* Give it a fixed height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.timeline-content p {
-    margin: 5px 0;
+.period {
+  font-family: 'Roboto Mono', monospace;
+  color: #64ffda;
+  font-size: 1rem;
+  display: block;
+  margin-top: 0.5rem;
 }
 
 .timeline-details {
-    opacity: 0;
-    transition: opacity 0.3s ease;
     max-height: 0;
     overflow: hidden;
-    margin-top: 10px;
-}
+    transition: max-height 0.3s ease-out;
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
 
-.timeline-details.visible {
+  .timeline-item.expanded .timeline-details {
+    max-height: 500px; /* Adjust based on your content */
     opacity: 1;
-    max-height: 500px; /* Adjust as needed */
-}
+    margin-top: 1rem;
+  }
 
-.timeline-item:hover .timeline-details {
-    opacity: 1;
-    max-height: 500px; /* Adjust as needed */
-}
-
-.timeline-details ul {
-    list-style-type: disc;
-    padding-left: 20px;
-}
+  .timeline-item:hover {
+    background-color: rgba(100, 255, 218, 0.05);
+  }
 
 .timeline-details li {
-    margin-bottom: 10px;
+  margin: 0.5rem 0;
+  line-height: 1.6;
+  position: relative;
+  padding-left: 1.5rem;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-/* Enhanced Ambitions & Abilities section */
-.content-container {
-    position: relative; /* For absolute positioning of the background graphic */
-    padding: 20px;
-    background: #111; /* Dark background for contrast */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow effect */
-    margin-top: 20px;
-}
-
-.about-heading {
-    color: #ff6600; /* Accent color for the heading */
-    margin-bottom: 20px;
-    font-size: 2.5em; /* Larger font size */
-    font-weight: bold;
-    text-align: center; /* Center-align heading */
-    position: relative;
-    padding-bottom: 10px; /* Add space below heading */
-}
-
-.about-heading::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px; /* Underline width */
-    height: 5px; /* Underline height */
-    background: #ff6600; /* Underline color */
-    border-radius: 2px; /* Rounded corners for underline */
-}
-
-/* Enhanced Ambitions & Abilities text */
-.about-text {
-    font-size: 1.2rem; /* Slightly larger font size for readability */
-    line-height: 1.6; /* Increased line height for better readability */
-    color: #e0e0e0; /* Light gray color for text */
-    text-align: center; /* Center-align text */
-    max-width: 800px; /* Maximum width for text container */
-    margin: 0 auto; /* Center-align container */
-    padding: 20px; /* Padding around text */
-    background-color: #222; /* Dark background for contrast */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
-    margin-bottom: 20px; /* Space below the text container */
-}
-
-/* Skill Icons */
-.skill-icons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px; /* Space between icons */
-    justify-content: center; /* Center-align icons */
-    position: relative; /* For positioning skill names */
-}
-
-/* Skill icon styling */
-.skill-icons .skill-icon {
-    width: 80px;
-    height: 80px;
-    background-color: #ff6600; /* Orange color for icons */
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative; /* For positioning tooltip */
-    overflow: hidden; /* Hide the tooltip initially */
-    transition: all 0.3s ease; /* Smooth transition for hover effect */
-}
-
-/* Rotating animation */
-@keyframes rotateClockwise {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-
-.skill-icons .skill-icon {
-    animation: rotateClockwise 2s linear, rotateCounterClockwise 2s linear; /* Rotate clockwise and then counterclockwise */
-}
-
-/* Skill icon image styling */
-.skill-icons .skill-icon img {
-    width: 40px; /* Adjust size as needed */
-    height: 40px; /* Adjust size as needed */
-    transition: transform 0.3s ease; /* Smooth transition for sliding effect */
-}
-
-/* Tooltip for skill name */
-.skill-tooltip {
-    position: absolute;
-    left: 100%; /* Start the tooltip off-screen to the right */
-    white-space: nowrap;
-    font-size: 12px;
-    color: #fff;
-    background: #333; /* Dark background for tooltip */
-    padding: 5px;
-    border-radius: 5px; /* Rounded corners for tooltip */
-    transform: translateX(-100%);
-    transition: all 0.3s ease;
-    opacity: 0;
-    visibility: hidden;
-}
-
-.skill-icons .skill-icon:hover .skill-tooltip {
+.timeline-item.expanded .timeline-details li {
     opacity: 1;
-    visibility: visible;
-    left: 50%;
-    transform: translateX(-50%); /* Center the tooltip within the circle */
+    transform: translateY(0);
+  }
+  
+
+  .timeline-details li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: #64ffda;
+  }
+
+  .timeline-item.expanded .timeline-details li:nth-child(1) { transition-delay: 0.1s; }
+  .timeline-item.expanded .timeline-details li:nth-child(2) { transition-delay: 0.2s; }
+  .timeline-item.expanded .timeline-details li:nth-child(3) { transition-delay: 0.3s; }
+  .timeline-item.expanded .timeline-details li:nth-child(4) { transition-delay: 0.4s; }
+
+
+/* About Text Styles */
+.about-content {
+  background-color: rgba(100, 255, 218, 0.05);
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid rgba(100, 255, 218, 0.1);
 }
 
-.skill-icons .skill-icon:hover img {
-    transform: translateX(-200%); /* Slide the icon completely out of view */
+.about-text {
+  line-height: 1.8;
+  font-size: 1.1rem;
+  margin: 0;
 }
 
-/* Mobile view adjustments */
+/* Skills Grid Styles */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    /* Lighter background */
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(100, 255, 218, 0.2);
+  }
+  
+  .skill-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    /* Lighter background for individual items */
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+  }
+  
+  .skill-item:hover {
+    transform: translateY(-5px);
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+  
+  .skill-icon {
+    width: 50px;
+    height: 50px;
+    /* Remove filters to show original colors */
+    transition: transform 0.3s ease;
+  }
+  
+  .skill-item:hover .skill-icon {
+    transform: scale(1.1);
+  }
+  
+  .skill-name {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.9rem;
+    color: #64ffda;
+    font-weight: 500;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .skills-grid {
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: 1.5rem;
+      padding: 1.5rem;
+    }
+    
+    .skill-item {
+      padding: 0.75rem;
+    }
+  }
+
+/* Responsive Styles */
 @media (max-width: 768px) {
-    #about {
-        flex-direction: column; /* Stack sections vertically on mobile */
-    }
+  #about {
+    padding: 80px 15px 30px;
+  }
 
-    .timeline-container,
-    .content-container {
-        padding-right: 10px;
-        padding-left: 10px;
-    }
+  .section-title {
+    font-size: 1.75rem;
+  }
 
-    .content-container {
-        margin-top: 20px; /* Space between sections on mobile */
-    }
+  .timeline-header h3 {
+    font-size: 1.25rem;
+  }
 
-    .skill-icons .skill-icon {
-        width: 60px; /* Adjust size for mobile */
-        height: 60px; /* Adjust size for mobile */
-    }
+  .about-text {
+    font-size: 1rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .timeline-item {
+    padding-left: 1.5rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 1rem;
+  }
+
+  .skill-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .skill-name {
+    font-size: 0.8rem;
+  }
 }

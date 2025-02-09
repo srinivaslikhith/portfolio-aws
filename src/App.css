@@ -36,3 +36,23 @@
     transform: rotate(360deg);
   }
 }
+html, body {
+  overscroll-behavior: none;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #1a1a1a;
+}
+
+#root, .app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Add this to prevent any overflow */
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}

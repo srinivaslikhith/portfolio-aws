@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../css/about.css'; // Import the specific stylesheet for the About page
 
 // Import all skill icons
@@ -40,6 +40,19 @@ const skillIcons = {
 };
 
 function About() {
+  const [expandedItems, setExpandedItems] = useState(new Set());
+
+  const toggleItem = (index) => {
+    setExpandedItems(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(index)) {
+        newSet.delete(index);
+      } else {
+        newSet.add(index);
+      }
+      return newSet;
+    });
+  };
   const timelineItems = [
     {
       title: "Stony Brook University",
@@ -80,41 +93,54 @@ function About() {
 
   return (
     <section id="about">
-      <div className="timeline-container">
-        <div className="timeline-heading-container">
-          <h2 className="about-heading">Education and Experience Timeline</h2>
-        </div>
-        <div className="timeline">
-          {timelineItems.map((item, index) => (
-            <div key={index} className="timeline-item">
-              <div className="timeline-content">
-                <h3>{item.title}</h3>
-                <p>{item.period}</p>
+      <div className="about-container">
+        <div className="timeline-section">
+          <h2 className="section-title">{"<Education & Experience />"}</h2>
+          <div className="timeline">
+            {timelineItems.map((item, index) => (
+              <div 
+                key={index} 
+                className={`timeline-item ${expandedItems.has(index) ? 'expanded' : ''}`}
+                onClick={() => toggleItem(index)}
+              >
+                <div className="timeline-content">
+                  <div className="timeline-header">
+                    <h3>{item.title}</h3>
+                    <span className="period">{item.period}</span>
+                    <span className="expand-icon">
+                      {expandedItems.has(index) ? '−' : '+'}
+                    </span>
+                  </div>
+                  <ul className="timeline-details">
+                    {item.details.map((detail, i) => (
+                      <li key={i}>{detail}</li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-              <div className="timeline-details">
-                <ul>
-                  {item.details.map((detail, i) => (
-                    <li key={i}>{detail}</li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
 
-      <div className="content-container">
-        <h2 className="about-heading">Ambitions & Abilities</h2>
-        <p className="about-text">
-        During my time as a software engineer at LocoNav, I worked on developing and maintaining web applications and microservices using Ruby on Rails, Django, and gRPC. I joined LocoNav as a trainee in January 2022, after completing my bachelor's degree in computer science from Vellore Institute of Technology, and became a full-time engineer in June 2022. I have over two years of work experience in the software industry, and I am passionate about creating innovative and scalable solutions. I am currently pursuing my master's degree in computer science from Stony Brook University, where I am learning Systems, data science, and cloud computing. My goal is to enhance my skills and knowledge in these fields. I am a team player, a problem solver, and a lifelong learner, and I value quality, efficiency, and customer satisfaction in my work.
-        </p>
-        <div className="skill-icons">
-          {Object.entries(skillIcons).map(([skill, icon], index) => (
-            <div className="skill-icon" key={index}>
-              <img src={icon} alt={skill} />
-              <div className="skill-tooltip">{skill}</div>
-            </div>
-          ))}
+        <div className="about-section">
+          <h2 className="section-title">{"<About Me />"}</h2>
+          <div className="about-content">
+            <p className="about-text">
+              During my time as a software engineer at LocoNav, I worked on developing and maintaining web applications and microservices using Ruby on Rails, Django, and gRPC. I joined LocoNav as a trainee in January 2022, after completing my bachelor's degree in computer science from Vellore Institute of Technology, and became a full-time engineer in June 2022. I have over two years of work experience in the software industry, and I am passionate about creating innovative and scalable solutions. I am currently pursuing my master's degree in computer science from Stony Brook University, where I am learning Systems, data science, and cloud computing. My goal is to enhance my skills and knowledge in these fields. I am a team player, a problem solver, and a lifelong learner, and I value quality, efficiency, and customer satisfaction in my work.
+            </p>
+          </div>
+        </div>
+
+        <div className="skills-section">
+          <h2 className="section-title">{"<Tech Stack />"}</h2>
+          <div className="skills-grid">
+            {Object.entries(skillIcons).map(([skill, icon], index) => (
+              <div className="skill-item" key={index}>
+                <img src={icon} alt={skill} className="skill-icon" />
+                <span className="skill-name">{skill}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

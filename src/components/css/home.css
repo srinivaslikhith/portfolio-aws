@@ -1,3 +1,4 @@
+/* home.css */
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
 
 #home {
@@ -5,172 +6,140 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    padding: 0 20px;
+    min-height: 100vh;
+    padding: 80px 20px 20px; /* Added top padding to account for navbar */
     box-sizing: border-box;
-    margin-top: 80px; /* Space to prevent overlap with navbar */
-}
+    background-color: #1a1a1a;
+    color: #ffffff;
+    overflow: hidden; /* Prevents extra scroll */
+  }
 
 .content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    max-width: 1200px;
-    flex-wrap: wrap; /* Enable wrapping for smaller screens */
-    text-align: center; /* Center-align text */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
 }
 
-.text {
-    text-align: center;
-    flex: 1;
+.text-container {
+  text-align: center;
 }
 
-.text h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
+.typewriter-text {
+  margin-bottom: 2rem;
 }
 
-.text h2 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
+.typed-line {
+  font-size: 2.5rem;
+  font-family: 'Roboto Mono', monospace;
+  margin-bottom: 0.5rem;
+  min-height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 }
 
-.moving-phrase-container {
-    overflow: hidden;
-    white-space: nowrap;
-    position: relative;
-    width: 100%;
-    max-width: 500px; /* Adjust width as needed */
-    height: 60px; /* Height of the rectangular box */
-    margin: 20px auto;
-    box-sizing: border-box;
-    border: 2px solid #ff6600; /* Orange border */
-    border-radius: 8px; /* Rounded corners */
-    background-color: #222; /* Dark background for contrast */
+.cursor {
+  display: inline-block;
+  width: 3px;
+  margin-left: 5px;
+  background-color: #ffffff;
+  animation: blink 1s step-end infinite;
 }
 
-.moving-phrase {
-    display: flex;
-    align-items: center;
-    white-space: nowrap;
-    animation: scroll-text 8s linear infinite;
+.phrase-container {
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
 }
 
-.moving-phrase h3 {
-    display: inline;
-    font-size: 2rem;
-    margin: 0;
-    color: #fff;
-    padding: 0 20px; /* Space between phrases */
-    font-family: 'Roboto Mono', monospace; /* Futuristic font */
-    font-style: italic; /* Slanted text */
+.single-phrase {
+  font-size: 2rem;
+  color: #64ffda;
+  font-family: 'Roboto Mono', monospace;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
 }
 
-/* Animation for continuous scrolling text */
-@keyframes scroll-text {
-    0% {
-        transform: translateX(100%);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
+.fade-out {
+  opacity: 0;
+  transform: translateY(20px);
 }
 
-.text p {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
+.fade-in {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.download-button {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    color: white;
-    background-color: #007bff;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
+.resume-link-container {
+  margin-top: 3rem;
 }
 
-.download-button:hover {
-    background-color: #0056b3;
+.resume-link {
+  background: none;
+  border: 2px solid #64ffda;
+  color: #64ffda;
+  padding: 0.75rem 1.5rem;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
-.image {
-    flex: 1;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center; /* Center the image vertically */
-    margin-top: 20px; /* Add margin for spacing */
+.resume-link:hover {
+  background-color: rgba(100, 255, 218, 0.1);
 }
 
-.image svg {
-    width: 80%;
-    max-width: 500px;
-    height: auto;
+.resume-text {
+  position: relative;
+  z-index: 1;
 }
 
-/* Responsive Styles */
+@keyframes blink {
+  from, to {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Responsive styles */
 @media (max-width: 768px) {
-    #home {
-        margin-top: 70px; /* Adjust top margin for medium screens */
-    }
-
-    .text h1 {
-        font-size: 2.5rem;
-    }
-
-    .text h2 {
-        font-size: 2rem;
-    }
-
-    .text h3 {
-        font-size: 1.5rem;
-    }
-
-    .download-button {
-        font-size: 1rem;
-    }
-
-    .image {
-        justify-content: left;
-        margin-top: 20px;
-    }
-
-    .content {
-        flex-direction: column;
-    }
+  .typed-line {
+    font-size: 2rem;
+  }
+  
+  .single-phrase {
+    font-size: 1.5rem;
+  }
+  
+  .resume-link {
+    font-size: 1rem;
+    padding: 0.6rem 1.2rem;
+  }
 }
 
 @media (max-width: 480px) {
-    #home {
-        margin-top: 60px; /* Further adjust top margin for small screens */
-    }
-
-    .text h1 {
-        font-size: 2rem;
-    }
-
-    .text h2 {
-        font-size: 1.8rem;
-    }
-
-    .text h3 {
-        font-size: 1.3rem;
-    }
-
-    .download-button {
-        font-size: 0.9rem;
-    }
-
-    .image {
-        justify-content: left;
-        margin-top: 20px;
-    }
-
-    .content {
-        flex-direction: column;
-    }
+  .typed-line {
+    font-size: 1.6rem;
+  }
+  
+  .single-phrase {
+    font-size: 1.2rem;
+  }
+  
+  .resume-link {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
 }

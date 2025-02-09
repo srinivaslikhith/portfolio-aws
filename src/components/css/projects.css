@@ -1,116 +1,156 @@
-/* General styles for the projects section */
-html, body {
-  height: 100%;
-  margin: 0;
-  overflow-x: hidden; /* Prevent horizontal scrolling */
-  background-color: #000; /* Black background */
-  color: #fff; /* White text color for contrast */
-}
-
 #projects {
-    padding: 20px;
-    background-color: #000; /* Black background for contrast */
-    color: #fff; /* White text color for contrast */
-    position: relative; /* Relative positioning for the dimming effect */
-    padding-top: 80px; /* Adjust this value based on the height of your fixed navbar */
-}
-
-.projects-container {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    min-height: 100vh;
+    padding: 100px 20px 40px;
+    box-sizing: border-box;
+  }
+  
+  .projects-container {
     max-width: 1200px;
     margin: 0 auto;
-}
-
-.projects-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-/* Default styles for project cards */
-.project-card {
-    position: relative;
-    width: calc(33.333% - 20px); /* Three columns with gap adjustment */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
+  }
+  
+  .section-title {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 2rem;
+    color: #64ffda;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+  }
+  
+  .project-card {
+    background-color: rgba(255, 255, 255, 0.05);
     border-radius: 8px;
     overflow: hidden;
-}
-
-.project-card img {
-    width: 100%;
-    height: auto;
-    display: block;
-    transition: opacity 0.3s ease;
-}
-
-.project-details {
-    padding: 20px;
-    background: #222; /* Dark background for the details */
-    border-top: 1px solid #333; /* Subtle border for separation */
-}
-
-.project-title {
-    font-size: 1.5rem;
-    color: #ff6600; /* Accent color for the title */
-}
-
-.project-description {
-    font-size: 1rem;
-    color: #e0e0e0; /* Light gray color for description */
-    margin: 10px 0;
-}
-
-.project-link {
-    color: #ff6600; /* Accent color for the link */
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.project-card:hover {
-    transform: scale(1.05); /* Slightly enlarge the card on hover */
-    z-index: 10; /* Ensure the enlarged card is above others */
-}
-
-.project-card:hover img {
-    opacity: 0.5; /* Dim the image on hover */
-}
-
-/* Background dimming effect */
-#projects::before {
-    content: "";
-    position: fixed;
+    border: 1px solid rgba(100, 255, 218, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(100, 255, 218, 0.1);
+  }
+  
+  .project-image-container {
+    position: relative;
+    padding-top: 56.25%; /* 16:9 aspect ratio */
+    overflow: hidden;
+  }
+  
+  .project-image {
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  .project-card:hover .project-image {
+    transform: scale(1.05);
+  }
+  
+  .project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(26, 26, 26, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     opacity: 0;
-    pointer-events: none; /* Allow clicks through the dimmed background */
     transition: opacity 0.3s ease;
-    z-index: 1; /* Position behind project cards */
-}
-
-.project-card:hover ~ #projects::before {
-    opacity: 1; /* Show the dimmed background on card hover */
-}
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-    .project-card {
-        width: calc(50% - 20px); /* Two columns on medium screens */
+  }
+  
+  .project-card:hover .project-overlay {
+    opacity: 1;
+  }
+  
+  .view-project-btn {
+    padding: 0.75rem 1.5rem;
+    background-color: #64ffda;
+    color: #1a1a1a;
+    text-decoration: none;
+    border-radius: 4px;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 500;
+    transition: transform 0.2s ease;
+  }
+  
+  .view-project-btn:hover {
+    transform: scale(1.05);
+  }
+  
+  .project-content {
+    padding: 1.5rem;
+  }
+  
+  .project-title {
+    color: #64ffda;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.25rem;
+    margin: 0 0 1rem 0;
+  }
+  
+  .project-description {
+    color: #ffffff;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  
+  .project-tag {
+    background-color: rgba(100, 255, 218, 0.1);
+    color: #64ffda;
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-family: 'Roboto Mono', monospace;
+  }
+  
+  @media (max-width: 768px) {
+    .projects-grid {
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
     }
-}
-
-@media (max-width: 480px) {
-    .project-card {
-        width: calc(100% - 20px); /* Single column on small screens */
+    
+    .section-title {
+      font-size: 1.75rem;
     }
-
+  }
+  
+  @media (max-width: 480px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    
+    .section-title {
+      font-size: 1.5rem;
+    }
+    
+    .project-content {
+      padding: 1rem;
+    }
+    
     .project-title {
-        font-size: 1.2rem; /* Adjust title size for small screens */
+      font-size: 1.1rem;
     }
-
-    .project-description {
-        font-size: 0.9rem; /* Adjust description size for small screens */
-    }
-}
+  }
