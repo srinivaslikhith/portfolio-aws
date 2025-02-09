@@ -43,8 +43,8 @@ function About() {
   const [expandedItems, setExpandedItems] = useState(new Set());
 
   const toggleItem = (index) => {
-    setExpandedItems(prev => {
-      const newSet = new Set(prev || []);
+    setExpandedItems((prev = new Set()) => { // Ensure prev is a Set
+      const newSet = new Set(prev); // Create a new Set (immutability)
       if (newSet.has(index)) {
         newSet.delete(index);
       } else {
