@@ -85,7 +85,7 @@ const projects = [
   }
 ];
 
-function Projects() {
+function Projects({ skillsRef }) {
   return (
     <section id="projects">
       <div className="projects-container">
@@ -122,9 +122,9 @@ function Projects() {
         </div>
       </div>
 
-      {/* Skills Section */}
+      {/* ✅ Attach skillsRef to the Skills Section */}
       <div className="skills-section">
-          <h2 className="section-title">{'<Skills />'}</h2>
+          <h2 className="section-title" ref={skillsRef}>{'<Skills />'}</h2>
           <div className="skills-grid">
             {Object.entries(skillIcons).map(([skill, icon]) => (
               <div key={skill} className="skill-item">

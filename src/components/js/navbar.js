@@ -15,8 +15,8 @@ function Navbar() {
           </Link>
         </li>
         {/* <li>
-          <Link href="/about" className={location === '/about' ? 'active' : ''}>
-            {"< About />"}
+          <Link href="/intro" className={location === '/intro' ? 'active' : ''}>
+            {"< Intro />"}
           </Link>
         </li> */}
         <li>
