@@ -1,201 +1,255 @@
+/* Projects Section */
+#projects {
+  display: block; /* ✅ ensures children stack vertically */
+  background-color: #1a1a1a;
+  color: #ffffff;
+  min-height: 100vh;
+  padding: 100px 0px 40px;
+  box-sizing: border-box;
+}
 
-/* Skills Grid Styles */
-.skills-grid {
+
+.projects-container {
+  max-width: 100%; /* ✅ no limit */
+  margin: 0 auto;
+  width: 100%;
+}
+
+.section-title {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 2rem;
+  color: #64ffda;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* ✅ Grid: 3 on large, 2 on tablet, 1 on mobile */
+.projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   gap: 2rem;
-  padding: 2rem;
+  width: 100%;
+  grid-template-columns: repeat(3, 1fr); /* ✅ default: 3 cards */
+}
+
+@media (max-width: 1024px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr); /* tablet */
+  }
+}
+
+@media (max-width: 640px) {
+  .projects-grid {
+    grid-template-columns: 1fr; /* mobile */
+  }
+}
+
+.project-card {
   background-color: rgba(255, 255, 255, 0.05);
   border-radius: 8px;
-  border: 1px solid rgba(100, 255, 218, 0.2);
+  overflow: hidden;
+  border: 1px solid rgba(100, 255, 218, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.skill-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  transition: all 0.3s ease;
-  padding: 1rem;
-  background-color: rgba(255, 255, 255, 0.25);
-  border-radius: 8px;
-}
-
-.skill-item:hover {
+.project-card:hover {
   transform: translateY(-5px);
-  background-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 20px rgba(100, 255, 218, 0.1);
 }
 
-.skill-icon {
-  width: 50px;
-  height: 50px;
+.project-image-container {
+  position: relative;
+  padding-top: 56.25%; /* 16:9 aspect ratio */
+  overflow: hidden;
+}
+
+.project-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   transition: transform 0.3s ease;
 }
 
-.skill-item:hover .skill-icon {
-  transform: scale(1.1);
+.project-card:hover .project-image {
+  transform: scale(1.05);
 }
 
-.skill-name {
+.project-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(26, 26, 26, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.project-card:hover .project-overlay {
+  opacity: 1;
+}
+
+.view-project-btn {
+  padding: 0.75rem 1.5rem;
+  background-color: #64ffda;
+  color: #1a1a1a;
+  text-decoration: none;
+  border-radius: 4px;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 500;
+  transition: transform 0.2s ease;
+}
+
+.view-project-btn:hover {
+  transform: scale(1.05);
+}
+
+.project-content {
+  padding: 1.5rem;
+}
+
+.project-title {
+  color: #64ffda;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1.25rem;
+  margin: 0 0 1rem 0;
+}
+
+.project-description {
+  color: #ffffff;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.project-tag {
+  background-color: rgba(100, 255, 218, 0.1);
+  color: #64ffda;
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  font-family: 'Roboto Mono', monospace;
+}
+
+/* Project Categories */
+.project-category {
+  margin-bottom: 4rem;
+}
+
+.category-title {
+  font-size: 1.75rem;
+  color: #64ffda;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-family: 'Roboto Mono', monospace;
+  position: relative;
+  display: inline-block;
+}
+
+.category-title::after {
+  content: '';
+  display: block;
+  height: 2px;
+  width: 60%;
+  margin: 0.5rem auto 0;
+  background-color: rgba(100, 255, 218, 0.3);
+}
+
+/* ✅ Skills Section */
+.skills-section {
+  display: block;     /* ✅ force full width block element */
+  max-width: 1200px;
+  margin: 4rem auto 0 auto; /* ✅ spacing above, centered */
+  width: 100%;
+  text-align: center;
+}
+
+.skills-bubble-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 3rem 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.skill-bubble {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(100, 255, 218, 0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.35s ease, background 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.skill-bubble:hover {
+  transform: scale(1.25);
+  background: rgba(100, 255, 218, 0.18);
+  border-color: #64ffda;
+  box-shadow: 0 0 10px rgba(100, 255, 218, 0.4);
+  z-index: 2;
+}
+
+.skill-bubble-icon {
+  width: 42px;
+  height: 42px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.skill-bubble:hover .skill-bubble-icon {
+  transform: scale(1.15);
+  filter: none;
+}
+
+.skill-bubble.active {
+  background: #64ffda;
+  border: 1px solid #64ffda;
+  transform: scale(1.35);
+  box-shadow: 0 0 15px rgba(100, 255, 218, 0.6);
+}
+
+.skill-bubble.active .skill-bubble-icon {
+  filter: brightness(0) invert(1);
+}
+
+.active-skill-name {
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1.2rem;
+  color: #64ffda;
+  font-weight: 600;
+}
+
+.skill-tooltip {
+  position: fixed;
+  background: #1a1a1a;
+  border: 1px solid #64ffda;
+  color: #64ffda;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
   font-family: 'Roboto Mono', monospace;
   font-size: 0.9rem;
-  color: #64ffda;
-  font-weight: 500;
+  pointer-events: none;
+  z-index: 999;
+  white-space: nowrap;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: opacity 0.15s ease;
 }
-
-#projects {
-    background-color: #1a1a1a;
-    color: #ffffff;
-    min-height: 100vh;
-    padding: 100px 20px 40px;
-    box-sizing: border-box;
-  }
-  
-  .projects-container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .section-title {
-    font-family: 'Roboto Mono', monospace;
-    font-size: 2rem;
-    color: #64ffda;
-    margin-bottom: 2rem;
-    text-align: center;
-  }
-  
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 2rem;
-    padding: 1rem;
-  }
-  
-  .project-card {
-    background-color: rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
-    overflow: hidden;
-    border: 1px solid rgba(100, 255, 218, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(100, 255, 218, 0.1);
-  }
-  
-  .project-image-container {
-    position: relative;
-    padding-top: 56.25%; /* 16:9 aspect ratio */
-    overflow: hidden;
-  }
-  
-  .project-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-  }
-  
-  .project-card:hover .project-image {
-    transform: scale(1.05);
-  }
-  
-  .project-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(26, 26, 26, 0.9);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  
-  .project-card:hover .project-overlay {
-    opacity: 1;
-  }
-  
-  .view-project-btn {
-    padding: 0.75rem 1.5rem;
-    background-color: #64ffda;
-    color: #1a1a1a;
-    text-decoration: none;
-    border-radius: 4px;
-    font-family: 'Roboto Mono', monospace;
-    font-weight: 500;
-    transition: transform 0.2s ease;
-  }
-  
-  .view-project-btn:hover {
-    transform: scale(1.05);
-  }
-  
-  .project-content {
-    padding: 1.5rem;
-  }
-  
-  .project-title {
-    color: #64ffda;
-    font-family: 'Roboto Mono', monospace;
-    font-size: 1.25rem;
-    margin: 0 0 1rem 0;
-  }
-  
-  .project-description {
-    color: #ffffff;
-    line-height: 1.6;
-    margin-bottom: 1rem;
-  }
-  
-  .project-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 1rem;
-  }
-  
-  .project-tag {
-    background-color: rgba(100, 255, 218, 0.1);
-    color: #64ffda;
-    padding: 0.25rem 0.75rem;
-    border-radius: 15px;
-    font-size: 0.85rem;
-    font-family: 'Roboto Mono', monospace;
-  }
-  
-  @media (max-width: 768px) {
-    .projects-grid {
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1.5rem;
-    }
-    
-    .section-title {
-      font-size: 1.75rem;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .projects-grid {
-      grid-template-columns: 1fr;
-      gap: 1rem;
-    }
-    
-    .section-title {
-      font-size: 1.5rem;
-    }
-    
-    .project-content {
-      padding: 1rem;
-    }
-    
-    .project-title {
-      font-size: 1.1rem;
-    }
-  }

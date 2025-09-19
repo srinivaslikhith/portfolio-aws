@@ -33,7 +33,7 @@ function Contact() {
   return (
     <section id="contact">
       <div className="contact-container">
-        <h2 className="section-title">{"<Contact />"}</h2>
+        {/* <h2 className="section-title">{"<Contact />"}</h2> */}
         
         <div className="contact-content">
           <div className="contact-left">

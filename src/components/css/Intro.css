@@ -10,11 +10,13 @@
 }
 
 .intro-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
+  max-width: 1200px;       /* limits the width on large screens */
+  margin: 0 auto;          /* centers the container horizontally */
+  display: flex;           /* flex layout to stack child elements */
+  flex-direction: column;  /* vertical stacking */
+  gap: 4rem;               /* spacing between sections (timeline, skills, etc.) */
+  padding: 0 20px;         /* optional horizontal padding for small screens */
+  box-sizing: border-box;  /* include padding in width calculations */
 }
 
 .section-title {
@@ -183,4 +185,46 @@
   .skill-name {
     font-size: 0.8rem;
   }
+}
+
+/* Add toggle interaction */
+.timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer; /* make clickable */
+  transition: background-color 0.2s ease;
+  padding: 0.5rem 0;
+}
+
+.timeline-header:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.timeline-title {
+  display: flex;
+  flex-direction: column;
+}
+
+.toggle-icon {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #64ffda;
+  margin-left: 1rem;
+}
+
+/* Start hidden, expand with animation */
+.timeline-details {
+  margin-top: 0.5rem;
+  padding-left: 1.5rem;
+  list-style: none;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.timeline-item.open .timeline-details {
+  max-height: 500px; /* large enough to fit details */
+  opacity: 1;
 }

@@ -1,34 +1,27 @@
-// Navbar.jsx
-import { Link, useLocation } from 'wouter';
-import '../css/navbar.css';
 import React from 'react';
+import '../css/navbar.css';
 
-function Navbar() {
-  const [location] = useLocation();
-  
+function Navbar({ activeSection }) {
+  const links = [
+    { id: 'home', label: '< Home />' },
+    { id: 'intro', label: '< Intro />' },
+    { id: 'projects', label: '< Projects />' },
+    { id: 'contact', label: '< Contact />' },
+  ];
+
   return (
     <nav>
       <ul>
-        <li>
-          <Link href="/" className={location === '/' ? 'active' : ''}>
-            {"< Home />"}
-          </Link>
-        </li>
-        {/* <li>
-          <Link href="/intro" className={location === '/intro' ? 'active' : ''}>
-            {"< Intro />"}
-          </Link>
-        </li> */}
-        <li>
-          <Link href="/projects" className={location === '/projects' ? 'active' : ''}>
-            {"< Projects />"}
-          </Link>
-        </li>
-        <li>
-          <Link href="/contact" className={location === '/contact' ? 'active' : ''}>
-            {"< Contact />"}
-          </Link>
-        </li>
+        {links.map((link) => (
+          <li key={link.id}>
+            <a
+              href={`#${link.id}`}
+              className={activeSection === link.id ? 'active' : ''}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
       </ul>
     </nav>
   );
