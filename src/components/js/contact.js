@@ -1,52 +1,60 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import '../css/contact.css';
-import emailjs from 'emailjs-com';
+import emailjs from '@emailjs/browser';   // ✅ modern package
 import ProfilePic from '../images/profile.jpeg';
 
 function Contact() {
+  const formRef = useRef();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: ''
   });
+  const [isSending, setIsSending] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const serviceID = 'service_0ilvsqf';
-    const templateID = 'template_qevo2cl';
-    const userID = 'vRNxTvYEq1DaQ8oFy';
+    setIsSending(true);
 
-    emailjs.sendForm(serviceID, templateID, e.target, userID)
-      .then((result) => {
-        alert('Message sent successfully!');
-        setFormData({ name: '', email: '', message: '' });
-      }, (error) => {
-        alert('Failed to send message.');
-      });
+    try {
+      const serviceID = 'service_0ilvsqf';
+      const templateID = 'template_qevo2cl';
+      const userID = 'vRNxTvYEq1DaQ8oFy';
+
+      await emailjs.sendForm(serviceID, templateID, formRef.current, userID);
+      alert('Message sent successfully!');
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      console.error('EmailJS error:', error);
+      alert('Failed to send message. Please try again later.');
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
     <section id="contact">
       <div className="contact-container">
-        {/* <h2 className="section-title">{"<Contact />"}</h2> */}
-        
         <div className="contact-content">
+          {/* Left side */}
           <div className="contact-left">
             <div className="profile-image-container">
               <img src={ProfilePic} alt="Profile" className="profile-image" />
             </div>
-            
+
             <div className="contact-links">
               <h3>Let's Connect</h3>
               <div className="contact-info">
                 <div className="contact-item">
                   <span className="contact-label">Email</span>
-                  <a href="mailto:likhithsrinivas9@gmail.com">likhithsrinivas9@gmail.com</a>
+                  <a href="mailto:likhithsrinivas9@gmail.com">
+                    likhithsrinivas9@gmail.com
+                  </a>
                 </div>
                 <div className="contact-item">
                   <span className="contact-label">Phone</span>
@@ -54,9 +62,11 @@ function Contact() {
                 </div>
                 <div className="contact-item">
                   <span className="contact-label">LinkedIn</span>
-                  <a href="https://www.linkedin.com/in/srinivas-likhith/" 
-                     target="_blank" 
-                     rel="noopener noreferrer">
+                  <a
+                    href="https://www.linkedin.com/in/srinivas-likhith/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     srinivas-likhith
                   </a>
                 </div>
@@ -64,8 +74,13 @@ function Contact() {
             </div>
           </div>
 
+          {/* Right side (form) */}
           <div className="contact-right">
-            <form className="contact-form" onSubmit={handleSubmit}>
+            <form
+              ref={formRef}
+              className="contact-form"
+              onSubmit={handleSubmit}
+            >
               <div className="form-group">
                 <label htmlFor="name">Name</label>
                 <input
@@ -101,8 +116,8 @@ function Contact() {
                 />
               </div>
 
-              <button type="submit" className="submit-btn">
-                Send Message
+              <button type="submit" className="submit-btn" disabled={isSending}>
+                {isSending ? 'Sending...' : 'Send Message'}
               </button>
             </form>
           </div>

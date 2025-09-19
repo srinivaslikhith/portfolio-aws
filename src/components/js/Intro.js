@@ -17,7 +17,7 @@ function TimelineItem({ title, period, details }) {
         <span className="toggle-icon">{isOpen ? '−' : '+'}</span>
       </div>
 
-      {isOpen && (
+      {isOpen && Array.isArray(details) && (
         <ul className="timeline-details">
           {details.map((detail, index) => (
             <li key={index}>{detail}</li>
@@ -79,18 +79,20 @@ function Intro() {
         <div className="timeline-section">
           <h2 className="section-title">{'<Experience />'}</h2>
           <div className="timeline">
-            {experienceItems.map((item, index) => (
-              <TimelineItem key={index} {...item} />
-            ))}
+            {Array.isArray(experienceItems) &&
+              experienceItems.map((item, index) => (
+                <TimelineItem key={index} {...item} />
+              ))}
           </div>
         </div>
 
         <div className="timeline-section">
           <h2 className="section-title">{'<Education />'}</h2>
           <div className="timeline">
-            {educationItems.map((item, index) => (
-              <TimelineItem key={index} {...item} />
-            ))}
+            {Array.isArray(educationItems) &&
+              educationItems.map((item, index) => (
+                <TimelineItem key={index} {...item} />
+              ))}
           </div>
         </div>
       </div>

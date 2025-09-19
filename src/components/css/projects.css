@@ -253,3 +253,19 @@
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
   transition: opacity 0.15s ease;
 }
+
+∫.see-more-btn {
+  background: none;
+  border: none;
+  color: #007acc;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-top: 5px;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.see-more-btn:hover {
+  color: #005f99;
+  text-decoration: underline;
+}

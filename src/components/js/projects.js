@@ -1,4 +1,7 @@
-import React, { useState } from 'react';import '../css/projects.css';
+import React, { useState } from 'react';
+import '../css/projects.css';
+
+// 🔹 Image imports (make sure these files exist in /images/)
 import plasmaImage from '../images/blood.avif';
 import chatbotImage from '../images/chatbot.jpeg';
 import clusterImage from '../images/bigdata.jpg';
@@ -10,6 +13,7 @@ import dsdbImage from '../images/dsdb.png';
 import taImage from '../images/TA.png';
 import fleetImage from '../images/fleet.png';
 
+// 🔹 Skill icons
 import jsIcon from '../images/js.svg';
 import pyIcon from '../images/python.svg';
 import javaIcon from '../images/java.svg';
@@ -46,73 +50,137 @@ const skillIcons = {
   SpringBoot: springIcon,
 };
 
-// ✅ Group projects by category
+// 🔹 Projects grouped by category
 const categories = {
   "Blockchain & Distributed Databases": [
     {
       title: 'ConsensusX | Self-Optimizing Blockchain Platform',
-      description: 'Implemented an adaptive blockchain system integrating BFT consensus protocols (PBFT, SBFT, HotStuff) with architectures (OX, OXII, XOV, XOV++) to handle varying workloads and Byzantine fault scenarios. Developed a reinforcement learning agent for dynamic configuration tuning, achieving ~27% higher throughput than fixed setups.',
+      description:
+        'Implemented an adaptive blockchain system integrating BFT consensus protocols (PBFT, SBFT, HotStuff) with architectures (OX, OXII, XOV, XOV++) to handle varying workloads and Byzantine fault scenarios. Developed a reinforcement learning agent for dynamic configuration tuning, achieving ~27% higher throughput than fixed setups.',
       image: adachainImage,
       link: '',
-      tags: ['Blockchain', 'Distributed System', 'C++', 'Reinforcement Learning', 'BFT']
+      tags: ['Blockchain', 'Distributed System', 'C++', 'Reinforcement Learning', 'BFT'],
     },
     {
       title: 'Linear PBFT | Low-Complexity Consensus for Blockchains',
-      description: 'Developed a permissioned blockchain protocol using Linear PBFT, drastically reducing message complexity compared to classical PBFT. Added view-change and checkpointing mechanisms to tolerate Byzantine replicas while ensuring safety and liveness under network faults.',
+      description:
+        'Developed a permissioned blockchain protocol using Linear PBFT, drastically reducing message complexity compared to classical PBFT. Added view-change and checkpointing mechanisms to tolerate Byzantine replicas while ensuring safety and liveness under network faults.',
       image: pbftImage,
       link: 'https://github.com/srinivaslikhith/linear-pbft',
-      tags: ['Blockchain', 'Distributed Consensus', 'C++', 'gRPC', 'Linear PBFT']
+      tags: ['Blockchain', 'Distributed Consensus', 'C++', 'gRPC', 'Linear PBFT'],
     },
     {
       title: 'APaxos: Distributed Sharded Database',
-      description: 'Built a distributed sharded database using a modified Paxos algorithm with snapshots for fast state catch-up. When a node encounters insufficient balance, it attempts to become leader and initiates a consensus round, ensuring all nodes stay up-to-date while supporting intra- and cross-shard transactions with 2PL and 2PC for consistency and fault tolerance.',
+      description:
+        'Built a distributed sharded database using a modified Paxos algorithm with snapshots for fast state catch-up. When a node encounters insufficient balance, it attempts to become leader and initiates a consensus round, ensuring all nodes stay up-to-date while supporting intra- and cross-shard transactions with 2PL and 2PC for consistency and fault tolerance.',
       image: dsdbImage,
       link: 'https://github.com/srinivaslikhith/2pc-paxos',
-      tags: ['Distributed Database', 'Consensus', 'C++', 'gRPC', 'Paxos', 'Sharding', '2PC', '2PL', 'Snapshots']
-    }
+      tags: ['Distributed Database', 'Consensus', 'C++', 'gRPC', 'Paxos', 'Sharding', '2PC', '2PL', 'Snapshots'],
+    },
   ],
 
   "AI & Machine Learning": [
     {
       title: 'Deep Learning Chatbot',
-      description: 'Research article on chatbot functionality, highlighting neural network training with intent data. Developed a Python prototype to demonstrate these concepts.',
+      description:
+        'Research article on chatbot functionality, highlighting neural network training with intent data. Developed a Python prototype to demonstrate these concepts.',
       image: chatbotImage,
       link: 'https://www.warse.org/IJATCSE/static/pdf/file/ijatcse741032021.pdf',
-      tags: ['Python', 'Neural Networks', 'NLP']
+      tags: ['Python', 'Neural Networks', 'NLP'],
     },
     {
       title: 'Optimized IVF Clustering',
-      description: 'Implemented and benchmarked clustering algorithms to optimize Inverted File Indexing for high-dimensional vector embeddings, focusing on efficiency, information loss, and balance.',
+      description:
+        'Implemented and benchmarked clustering algorithms to optimize Inverted File Indexing for high-dimensional vector embeddings, focusing on efficiency, information loss, and balance.',
       image: clusterImage,
       link: '',
-      tags: ['Clustering', 'Vector Embeddings', 'Optimization']
+      tags: ['Clustering', 'Vector Embeddings', 'Optimization'],
     },
     {
-    title: 'AI Teaching Assistant | Fine-Tuned LLaMA Model',
-    description: 'Applied LoRA-based fine-tuning on Meta’s LLaMA-3.2B with 4-bit quantization and mixed-precision training over domain-specific transcripts to build an efficient academic chatbot. Deployed via FastAPI and Streamlit with dynamic batching and KV caching to deliver fast student-facing Q&A with <2s latency.',
-    image: taImage,
-    link: '',
-    tags: ['AI', 'Chatbot', 'LLaMA', 'PyTorch', 'Transformers', 'FastAPI']
-  }
+      title: 'AI Teaching Assistant | Fine-Tuned LLaMA Model',
+      description:
+        'Applied LoRA-based fine-tuning on Meta’s LLaMA-3.2B with 4-bit quantization and mixed-precision training over domain-specific transcripts to build an efficient academic chatbot. Deployed via FastAPI and Streamlit with dynamic batching and KV caching to deliver fast student-facing Q&A with <2s latency.',
+      image: taImage,
+      link: '',
+      tags: ['AI', 'Chatbot', 'LLaMA', 'PyTorch', 'Transformers', 'FastAPI'],
+    },
   ],
 
   "Software Engineering & Microservices": [
     {
       title: 'FleetUpdater | IoT Device Management',
-      description: 'Built a backend microservice with REST APIs and a ReactJS frontend to enable secure OTA updates for IoT devices using AWS S3 presigned URLs, checksum validation, and recovery mechanisms resilient to reboots and unreliable networks. Developed a React dashboard to manage device groups and track installations across thousands of devices.',
+      description:
+        'Built a backend microservice with REST APIs and a ReactJS frontend to enable secure OTA updates for IoT devices using AWS S3 presigned URLs, checksum validation, and recovery mechanisms resilient to reboots and unreliable networks. Developed a React dashboard to manage device groups and track installations across thousands of devices.',
       image: fleetImage,
       link: '',
-      tags: ['IoT', 'Device Management', 'ReactJS', 'AWS S3', 'Microservices', 'OTA Updates']
+      tags: ['IoT', 'Device Management', 'ReactJS', 'AWS S3', 'Microservices', 'OTA Updates'],
     },
     {
       title: 'Plasma Donor App',
-      description: "Developed a plasma donor web app, cutting deployment time by 70% with Docker and a Jenkins CI/CD pipeline. Utilized AWS Lambda, API Gateway, and DynamoDB for scalable data handling, with Amazon SNS for real-time notifications.",
+      description:
+        'Developed a plasma donor web app, cutting deployment time by 70% with Docker and a Jenkins CI/CD pipeline. Utilized AWS Lambda, API Gateway, and DynamoDB for scalable data handling, with Amazon SNS for real-time notifications.',
       image: plasmaImage,
       link: 'https://github.com/srinivaslikhith/dynamite',
-      tags: ['Containerization', 'Jenkins', 'AWS', 'CI/CD']
-    }
-  ]
+      tags: ['Containerization', 'Jenkins', 'AWS', 'CI/CD'],
+    },
+  ],
 };
+
+// 🔹 Project Card with expandable description
+function ProjectCard({ project }) {
+  const [expanded, setExpanded] = useState(false);
+
+  const toggleDescription = () => {
+    setExpanded(!expanded);
+  };
+
+  const shortText =
+    project.description.length > 160
+      ? project.description.slice(0, 160) + '...'
+      : project.description;
+
+  return (
+    <div className="project-card">
+      <div className="project-image-container">
+        {project.image && (
+          <img src={project.image} alt={project.title} className="project-image" />
+        )}
+        <div className="project-overlay">
+          {project.link && (
+            <a
+              href={project.link}
+              className="view-project-btn"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View Project
+            </a>
+          )}
+        </div>
+      </div>
+
+      <div className="project-content">
+        <h3 className="project-title">{project.title}</h3>
+        <p className="project-description">
+          {expanded ? project.description : shortText}
+        </p>
+        {project.description.length > 160 && (
+          <button className="see-more-btn" onClick={toggleDescription}>
+            {expanded ? 'See Less' : 'See More'}
+          </button>
+        )}
+        <div className="project-tags">
+          {Array.isArray(project.tags) &&
+            project.tags.map((tag, idx) => (
+              <span key={idx} className="project-tag">
+                {tag}
+              </span>
+            ))}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function Projects({ skillsRef }) {
   const [hoveredSkill, setHoveredSkill] = useState(null);
@@ -125,44 +193,18 @@ function Projects({ skillsRef }) {
   return (
     <section id="projects">
       <div className="projects-container">
-        {/* <h2 className="section-title">{"<Projects />"}</h2> */}
-
-        {/* Categories loop unchanged */}
-        {Object.entries(categories).map(([category, projects]) => (
-          <div key={category} className="project-category">
-            <h3 className="category-title">{category}</h3>
-            <div className="projects-grid">
-              {projects.map((project, index) => (
-                <div className="project-card" key={index}>
-                  <div className="project-image-container">
-                    <img src={project.image} alt={project.title} className="project-image" />
-                    <div className="project-overlay">
-                      {project.link && (
-                        <a
-                          href={project.link}
-                          className="view-project-btn"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          View Project
-                        </a>
-                      )}
-                    </div>
-                  </div>
-                  <div className="project-content">
-                    <h3 className="project-title">{project.title}</h3>
-                    <p className="project-description">{project.description}</p>
-                    <div className="project-tags">
-                      {project.tags.map((tag, idx) => (
-                        <span key={idx} className="project-tag">{tag}</span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              ))}
+        {categories &&
+          Object.entries(categories).map(([category, projects]) => (
+            <div key={category} className="project-category">
+              <h3 className="category-title">{category}</h3>
+              <div className="projects-grid">
+                {Array.isArray(projects) &&
+                  projects.map((project, index) => (
+                    <ProjectCard key={index} project={project} />
+                  ))}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
       </div>
 
       {/* ✅ Skills Section */}
@@ -170,17 +212,18 @@ function Projects({ skillsRef }) {
         <h2 className="section-title">{'<Skills />'}</h2>
 
         <div className="skills-bubble-grid">
-          {Object.entries(skillIcons).map(([skill, icon]) => (
-            <div
-              key={skill}
-              className={`skill-bubble ${hoveredSkill === skill ? 'active' : ''}`}
-              onMouseEnter={() => setHoveredSkill(skill)}
-              onMouseLeave={() => setHoveredSkill(null)}
-              onMouseMove={handleMouseMove}
-            >
-              <img src={icon} alt={skill} className="skill-bubble-icon" />
-            </div>
-          ))}
+          {skillIcons &&
+            Object.entries(skillIcons).map(([skill, icon]) => (
+              <div
+                key={skill}
+                className={`skill-bubble ${hoveredSkill === skill ? 'active' : ''}`}
+                onMouseEnter={() => setHoveredSkill(skill)}
+                onMouseLeave={() => setHoveredSkill(null)}
+                onMouseMove={handleMouseMove}
+              >
+                {icon && <img src={icon} alt={skill} className="skill-bubble-icon" />}
+              </div>
+            ))}
         </div>
 
         {/* Floating tooltip */}
@@ -196,7 +239,5 @@ function Projects({ skillsRef }) {
     </section>
   );
 }
-
-
 
 export default Projects;
