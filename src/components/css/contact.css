@@ -1,198 +1,120 @@
 #contact {
-    background-color: #1a1a1a;
-    color: #ffffff;
-    min-height: 100vh;
-    padding: 80px 10px 30px;
-    box-sizing: border-box;
-  }
-  
-  .contact-container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .section-title {
-    font-family: 'Roboto Mono', monospace;
-    font-size: 2rem;
-    color: #64ffda;
-    margin-bottom: 2rem;
-    text-align: center;
-  }
-  
-  .contact-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    background-color: rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
-    padding: 2rem;
-    border: 1px solid rgba(100, 255, 218, 0.1);
-  }
-  
-  .contact-left {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem; /* Reduced from 2rem */
-  }
-  
-  .profile-image-container {
-    width: 100%;
-    max-height: 300px; /* Added max-height */
-    border-radius: 8px;
-    overflow: hidden;
-    border: 1px solid rgba(100, 255, 218, 0.2);
-  }
-  
-  .profile-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Makes image cover the container */
-    display: block;
-    transition: transform 0.3s ease;
-  }
-  
-  .profile-image:hover {
-    transform: scale(1.02);
-  }
-  
-  .contact-links {
-    background-color: rgba(255, 255, 255, 0.05);
-    padding: 1.25rem; /* Reduced from 1.5rem */
-    border-radius: 8px;
-    border: 1px solid rgba(100, 255, 218, 0.1);
-  }
-  
-  .contact-links h3 {
-    font-family: 'Roboto Mono', monospace;
-    color: #64ffda;
-    margin-bottom: 1rem; /* Reduced from 1.5rem */
-    font-size: 1.2rem;
-  }
-  
-  .contact-info {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem; /* Reduced from 1rem */
-  }
-  
-  .contact-item {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem; /* Reduced from 0.5rem */
-  }
-  
-  .contact-label {
-    font-family: 'Roboto Mono', monospace;
-    color: #64ffda;
-    font-size: 0.9rem;
-  }
-  
-  .contact-item a {
-    color: #fff;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-  
-  .contact-item a:hover {
-    color: #64ffda;
-  }
-  
-  .contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    background-color: rgba(255, 255, 255, 0.05);
-    padding: 1rem;
-    border-radius: 8px;
-    border: 1px solid rgba(100, 255, 218, 0.1);
-    /* Remove or adjust the height property */
-    height: auto;
+  padding: 100px 20px;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  background: transparent;
 }
-  
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+
+/* Orbit container */
+.contact-orbit-container {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  margin: 0 auto;
+}
+
+/* Center node */
+.orbit-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(100, 255, 218, 0.1);
+  border: 2px solid #64ffda;
+  border-radius: 50%;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #64ffda;
+  box-shadow: 0 0 20px rgba(100, 255, 218, 0.5);
+  z-index: 10;
+}
+
+/* Orbit container (rotating ring) */
+.orbit {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  animation: spin 20s linear infinite;
+}
+
+/* Orbiting nodes */
+/* Orbiting nodes */
+.orbit-node {
+  position: absolute;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2); /* ✅ lighter so icons pop */
+  border: 2px solid #64ffda;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 12px rgba(100, 255, 218, 0.4);
+  transition: all 0.3s ease;
+}
+
+/* SVG icons inside */
+.orbit-icon {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  filter: brightness(1.2); /* ✅ visible on gray */
+  transition: filter 0.3s ease;
+}
+
+/* Hover glow + neon invert */
+.orbit-node:hover {
+  background: #64ffda;
+  transform: scale(1.2);
+  box-shadow: 0 0 25px rgba(100, 255, 218, 0.8);
+  animation-play-state: paused; /* pause orbit on hover */
+}
+
+.orbit-node:hover .orbit-icon {
+  filter: brightness(0) invert(1); /* ✅ neon white */
+}
+
+
+/* Orbit positions */
+.orbit-node-1 { top: 0%; left: 50%; transform: translate(-50%, -50%); }
+.orbit-node-2 { top: 50%; left: 100%; transform: translate(-50%, -50%); }
+.orbit-node-3 { top: 100%; left: 50%; transform: translate(-50%, -50%); }
+.orbit-node-4 { top: 50%; left: 0%; transform: translate(-50%, -50%); }
+.orbit-node-5 { top: 15%; left: 15%; transform: translate(-50%, -50%); }
+
+/* Orbit spin animation */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .contact-orbit-container {
+    width: 300px;
+    height: 300px;
   }
-  
-  .form-group label {
-    font-family: 'Roboto Mono', monospace;
-    color: #64ffda;
+  .orbit-center {
+    width: 100px;
+    height: 100px;
     font-size: 0.9rem;
   }
-  
-  .form-group input,
-  .form-group textarea {
-    background-color: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(100, 255, 218, 0.2);
-    border-radius: 4px;
-    padding: 0.75rem;
-    color: #fff;
-    font-family: inherit;
-    transition: border-color 0.3s ease;
+  .orbit-node {
+    width: 50px;
+    height: 50px;
   }
-  
-  .form-group textarea {
-    min-height: 120px; /* Reduced from 150px */
-    resize: vertical;
+  .orbit-icon {
+    width: 24px;
+    height: 24px;
   }
-  
-  .form-group input:focus,
-  .form-group textarea:focus {
-    outline: none;
-    border-color: #64ffda;
-  }
-  
-  .submit-btn {
-    background-color: transparent;
-    color: #64ffda;
-    border: 1px solid #64ffda;
-    padding: 0.75rem 1.5rem;
-    font-family: 'Roboto Mono', monospace;
-    font-size: 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 117px;
-  }
-  
-  .submit-btn:hover {
-    background-color: rgba(100, 255, 218, 0.1);
-    transform: translateY(-2px);
-  }
-  
-  @media (max-width: 768px) {
-    .contact-content {
-      grid-template-columns: 1fr;
-    }
-  
-    .section-title {
-      font-size: 1.75rem;
-    }
-  
-    .profile-image-container {
-      max-height: 250px; /* Reduced for mobile */
-    }
-  
-    .contact-form {
-      padding: 1.5rem;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .section-title {
-      font-size: 1.5rem;
-    }
-  
-    .contact-links h3 {
-      font-size: 1.1rem;
-    }
-  
-    .profile-image-container {
-      max-height: 200px; /* Further reduced for smaller screens */
-    }
-  
-    .submit-btn {
-      width: 100%;
-    }
-  }
+}

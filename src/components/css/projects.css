@@ -10,7 +10,7 @@
 
 
 .projects-container {
-  max-width: 100%; /* ✅ no limit */
+  max-width: 95%; /* ✅ no limit */
   margin: 0 auto;
   width: 100%;
 }

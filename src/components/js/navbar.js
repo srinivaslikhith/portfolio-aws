@@ -6,6 +6,7 @@ function Navbar({ activeSection }) {
     { id: 'home', label: '< Home />' },
     { id: 'intro', label: '< Intro />' },
     { id: 'projects', label: '< Projects />' },
+    { id: 'skills', label: '< Skills />' },
     { id: 'contact', label: '< Contact />' },
   ];
 

@@ -1,0 +1,104 @@
+/* Skills section wrapper */
+#skills {
+  background: transparent; /* ✅ no harsh black */
+  padding: 80px 20px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.section-title {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 2rem;
+  color: #64ffda;
+  margin-bottom: 3rem;
+}
+
+/* Grid for panels */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1360px;
+  margin: 0 auto;
+}
+
+/* Futuristic panels */
+.skill-panel {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(100, 255, 218, 0.25);
+  border-radius: 12px;
+  padding: 1.8rem;
+  text-align: left;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ✅ Static ray of light (no animation) */
+.skill-panel::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 180deg, #64ffda33, transparent 70%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.skill-panel:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 25px rgba(100, 255, 218, 0.35);
+  border-color: rgba(100, 255, 218, 0.6);
+}
+
+
+.skill-panel:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 25px rgba(100, 255, 218, 0.35);
+  border-color: rgba(100, 255, 218, 0.6);
+}
+
+/* Category title */
+.skill-category {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1.3rem;
+  color: #64ffda;
+  margin-bottom: 1rem;
+}
+
+/* Skills list */
+.skill-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.skill-item {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+  font-family: 'Roboto Mono', monospace;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.skill-item:hover {
+  color: #64ffda;
+  transform: translateX(5px);
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .skill-panel {
+    padding: 1.2rem;
+  }
+  .skill-category {
+    font-size: 1.1rem;
+  }
+  .skill-item {
+    font-size: 0.9rem;
+  }
+}

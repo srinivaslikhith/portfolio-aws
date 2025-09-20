@@ -5,8 +5,9 @@ import Intro from './components/js/Intro';
 import Projects from './components/js/Projects';
 import Contact from './components/js/Contact';
 import Footer from './components/js/Footer';
+import Skills from './components/js/Skills';
 import './App.css';
-åçåç
+
 function App() {
   const [activeSection, setActiveSection] = useState('home');
 
@@ -20,7 +21,7 @@ function App() {
           }
         });
       },
-      { threshold: 0.2 } // 60% visible = active
+      { threshold: 0.2 }
     );
 
     sections.forEach((section) => observer.observe(section));
@@ -34,6 +35,7 @@ function App() {
         <Home />
         <Intro />
         <Projects />
+        <Skills/>
         <Contact />
       </div>
       <Footer />

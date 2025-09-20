@@ -1,146 +1,136 @@
-/* home.css */
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
 
 #home {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 80px 20px 20px; /* Added top padding to account for navbar */
-    box-sizing: border-box;
-    background-color: #1a1a1a;
-    color: #ffffff;
-    overflow: hidden; /* Prevents extra scroll */
-  }
-
-.content {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
+  min-height: 100vh;
+  padding: 60px 20px;
+  background-color: #1a1a1a;
+}
+.typewriter-text, 
+.typed-line, 
+.phrase-container, 
+.resume-text {
+  font-family: 'Roboto Mono', monospace;
 }
 
-.text-container {
-  text-align: center;
+
+/* Main hero card */
+.home-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.5rem;
+  max-width: 1000px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05); /* fade/glass effect */
+  border: 1px solid rgba(100, 255, 218, 0.2);
+  border-radius: 16px;
+  padding: 2.5rem;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  backdrop-filter: blur(10px);
+}
+
+/* Left photo */
+.home-left {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.profile-circle {
+  width: 240px;
+  height: 240px;
+  border-radius: 50%; /* circle */
+  border: 3px solid #64ffda;
+  object-fit: cover;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+/* Right text */
+.home-right {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  color: #fff;
 }
 
 .typewriter-text {
-  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #64ffda;
+  line-height: 1.4;
 }
 
 .typed-line {
-  font-size: 2.5rem;
-  font-family: 'Roboto Mono', monospace;
-  margin-bottom: 0.5rem;
-  min-height: 3rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
+  white-space: pre-wrap;
 }
 
 .cursor {
   display: inline-block;
-  width: 3px;
-  margin-left: 5px;
-  background-color: #ffffff;
-  animation: blink 1s step-end infinite;
+  margin-left: 2px;
+  animation: blink 1s infinite;
+  color: #64ffda;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
 }
 
 .phrase-container {
-  height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 2rem 0;
-}
-
-.single-phrase {
-  font-size: 2rem;
-  color: #64ffda;
-  font-family: 'Roboto Mono', monospace;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-}
-
-.fade-out {
-  opacity: 0;
-  transform: translateY(20px);
+  font-size: 1.4rem;
+  color: #ffffff;
+  font-weight: 500;
 }
 
 .fade-in {
   opacity: 1;
-  transform: translateY(0);
+  transition: opacity 0.5s ease-in;
 }
 
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+
+/* Resume button */
 .resume-link-container {
-  margin-top: 3rem;
+  margin-top: 1rem;
 }
 
 .resume-link {
-  background: none;
-  border: 2px solid #64ffda;
+  background: rgba(100, 255, 218, 0.1);
+  border: 1px solid #64ffda;
   color: #64ffda;
-  padding: 0.75rem 1.5rem;
-  font-family: 'Roboto Mono', monospace;
-  font-size: 1.2rem;
+  font-size: 1rem;
+  padding: 0.6rem 1.4rem;
+  border-radius: 6px;
   cursor: pointer;
   transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
 }
 
 .resume-link:hover {
-  background-color: rgba(100, 255, 218, 0.1);
+  background: #64ffda;
+  color: #0a192f;
+  transform: translateY(-2px);
 }
 
-.resume-text {
-  position: relative;
-  z-index: 1;
-}
-
-@keyframes blink {
-  from, to {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-}
-
-/* Responsive styles */
+/* Responsive */
 @media (max-width: 768px) {
-  .typed-line {
-    font-size: 2rem;
+  .home-card {
+    flex-direction: column;
+    text-align: center;
   }
-  
-  .single-phrase {
-    font-size: 1.5rem;
-  }
-  
-  .resume-link {
-    font-size: 1rem;
-    padding: 0.6rem 1.2rem;
-  }
-}
 
-@media (max-width: 480px) {
-  .typed-line {
-    font-size: 1.6rem;
+  .profile-circle {
+    width: 180px;
+    height: 180px;
   }
-  
-  .single-phrase {
-    font-size: 1.2rem;
-  }
-  
-  .resume-link {
-    font-size: 0.9rem;
-    padding: 0.5rem 1rem;
+
+  .home-right {
+    align-items: center;
   }
 }

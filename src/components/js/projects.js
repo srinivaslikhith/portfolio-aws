@@ -5,50 +5,15 @@ import '../css/projects.css';
 import plasmaImage from '../images/blood.avif';
 import chatbotImage from '../images/chatbot.jpeg';
 import clusterImage from '../images/bigdata.jpg';
-import bankImage from '../images/bank.webp';
-import blockchainImage from '../images/bchain.webp';
 import pbftImage from '../images/pbft.png';
 import adachainImage from '../images/adachain.png';
 import dsdbImage from '../images/dsdb.png';
 import taImage from '../images/TA.png';
 import fleetImage from '../images/fleet.png';
 
-// 🔹 Skill icons
-import jsIcon from '../images/js.svg';
-import pyIcon from '../images/python.svg';
-import javaIcon from '../images/java.svg';
-import sqlIcon from '../images/sql.svg';
-import htmlIcon from '../images/html.svg';
-import dockerIcon from '../images/docker.svg';
-import jenkinsIcon from '../images/jenkins.svg';
-import gitIcon from '../images/git.svg';
-import reactIcon from '../images/react.svg';
-import awsIcon from '../images/aws.svg';
-import kubIcon from '../images/kubernetes.svg';
-import redisIcon from '../images/redis.svg';
-import djangoIcon from '../images/django.svg';
-import springIcon from '../images/springboot.svg';
-import ngnixIcon from '../images/ngnix.svg';
-import kafkaIcon from '../images/kafka.svg';
 
-const skillIcons = {
-  JavaScript: jsIcon,
-  Python: pyIcon,
-  Java: javaIcon,
-  HTML: htmlIcon,
-  SQL: sqlIcon,
-  React: reactIcon,
-  AWS: awsIcon,
-  Docker: dockerIcon,
-  Jenkins: jenkinsIcon,
-  Git: gitIcon,
-  Kubernetes: kubIcon,
-  Redis: redisIcon,
-  Kafka: kafkaIcon,
-  NGINX: ngnixIcon,
-  Django: djangoIcon,
-  SpringBoot: springIcon,
-};
+
+
 
 // 🔹 Projects grouped by category
 const categories = {
@@ -183,12 +148,6 @@ function ProjectCard({ project }) {
 }
 
 function Projects({ skillsRef }) {
-  const [hoveredSkill, setHoveredSkill] = useState(null);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-
-  const handleMouseMove = (e) => {
-    setMousePos({ x: e.clientX, y: e.clientY });
-  };
 
   return (
     <section id="projects">
@@ -205,37 +164,7 @@ function Projects({ skillsRef }) {
               </div>
             </div>
           ))}
-      </div>
-
-      {/* ✅ Skills Section */}
-      <div className="skills-section" ref={skillsRef}>
-        <h2 className="section-title">{'<Skills />'}</h2>
-
-        <div className="skills-bubble-grid">
-          {skillIcons &&
-            Object.entries(skillIcons).map(([skill, icon]) => (
-              <div
-                key={skill}
-                className={`skill-bubble ${hoveredSkill === skill ? 'active' : ''}`}
-                onMouseEnter={() => setHoveredSkill(skill)}
-                onMouseLeave={() => setHoveredSkill(null)}
-                onMouseMove={handleMouseMove}
-              >
-                {icon && <img src={icon} alt={skill} className="skill-bubble-icon" />}
-              </div>
-            ))}
-        </div>
-
-        {/* Floating tooltip */}
-        {hoveredSkill && (
-          <div
-            className="skill-tooltip"
-            style={{ top: mousePos.y + 20, left: mousePos.x + 20 }}
-          >
-            {hoveredSkill}
-          </div>
-        )}
-      </div>
+           </div>
     </section>
   );
 }

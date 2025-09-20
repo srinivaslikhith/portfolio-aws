@@ -1,37 +1,11 @@
 import React, { useState } from 'react';
 import '../css/Intro.css';
 
-function TimelineItem({ title, period, details }) {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <div className={`timeline-item ${isOpen ? 'open' : ''}`}>
-      <div
-        className="timeline-header"
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        <div className="timeline-title">
-          <h3>{title}</h3>
-          <span className="period">{period}</span>
-        </div>
-        <span className="toggle-icon">{isOpen ? '−' : '+'}</span>
-      </div>
-
-      {isOpen && Array.isArray(details) && (
-        <ul className="timeline-details">
-          {details.map((detail, index) => (
-            <li key={index}>{detail}</li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
-}
-
 function Intro() {
   const experienceItems = [
     {
-      title: 'Graduate Researcher - Stony Brook University',
+      title: 'Graduate Researcher',
+      org: 'Stony Brook University',
       period: 'Jan 2023 – Present',
       details: [
         'Collected and anonymized clinical datasets from Stony Brook Hospital for large-scale analysis.',
@@ -40,59 +14,95 @@ function Intro() {
       ],
     },
     {
-      title: 'Software Engineer - LocoNav',
+      title: 'Software Engineer',
+      org: 'LocoNav',
       period: 'Jan 2022 – Aug 2023',
       details: [
         'Built scalable backend services handling real-time telemetry and video feeds from 50,000+ IoT dashcams.',
         'Implemented a distributed task orchestration engine with retries, scheduling, and fault recovery mechanisms.',
         'Developed a versioned configuration management system with an intuitive frontend for group-based device settings.',
         'Created a live video monitoring dashboard with sub-4s latency streaming supporting multiple concurrent sessions.',
-        'Built secure REST APIs for vehicle tracking and on-demand video delivery with real-time metadata overlays.',
-        'Automated CI/CD workflows with containerized deployments and enforced 85%+ test coverage for code reliability.',
-        'Integrated monitoring and observability with Elastic APM, Datadog, Prometheus, and Grafana.',
       ],
     },
   ];
 
   const educationItems = [
     {
-      title: 'Stony Brook University',
-      period: 'Aug. 2023 – May 2025',
+      title: 'Master’s in Computer Science',
+      org: 'Stony Brook University',
+      period: 'Aug 2023 – May 2025',
       details: [
-        'Masters in Computer Science',
         'Coursework: Distributed Systems, Database Systems, Advanced Algorithms, Visualization',
       ],
     },
     {
-      title: 'Vellore Institute of Technology',
+      title: 'Bachelor’s in Computer Science',
+      org: 'Vellore Institute of Technology',
       period: 'July 2018 – May 2022',
       details: [
-        "Bachelor’s in Computer Science",
-        'Coursework: Operating Systems, Data Structures, Object-Oriented Programming, Java, Computer Networks, AI',
+        'Coursework: Operating Systems, Data Structures, OOP, Java, Networks, AI',
       ],
     },
   ];
 
+  const [activeTab, setActiveTab] = useState('experience');
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const currentItems = activeTab === 'experience' ? experienceItems : educationItems;
+  const activeItem = currentItems[activeIndex];
+
   return (
     <section id="intro">
       <div className="intro-container">
-        <div className="timeline-section">
-          <h2 className="section-title">{'<Experience />'}</h2>
-          <div className="timeline">
-            {Array.isArray(experienceItems) &&
-              experienceItems.map((item, index) => (
-                <TimelineItem key={index} {...item} />
-              ))}
-          </div>
+        {/* <h2 className="section-title">{'<Experience & Education />'}</h2> */}
+
+        {/* Toggle buttons */}
+        <div className="tab-switcher">
+          <button
+            className={activeTab === 'experience' ? 'active' : ''}
+            onClick={() => {
+              setActiveTab('experience');
+              setActiveIndex(0);
+            }}
+          >
+            Experience
+          </button>
+          <button
+            className={activeTab === 'education' ? 'active' : ''}
+            onClick={() => {
+              setActiveTab('education');
+              setActiveIndex(0);
+            }}
+          >
+            Education
+          </button>
         </div>
 
-        <div className="timeline-section">
-          <h2 className="section-title">{'<Education />'}</h2>
-          <div className="timeline">
-            {Array.isArray(educationItems) &&
-              educationItems.map((item, index) => (
-                <TimelineItem key={index} {...item} />
+        <div className="tabs-layout">
+          {/* Left column: list */}
+          <div className="tabs-list">
+            {currentItems.map((item, index) => (
+              <div
+                key={index}
+                className={`tab-item ${index === activeIndex ? 'active' : ''}`}
+                onClick={() => setActiveIndex(index)}
+              >
+                <h4>{item.title}</h4>
+                <span className="org">{item.org}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Right column: details */}
+          <div className="tab-details">
+            <h3>{activeItem.title}</h3>
+            <h4 className="org">{activeItem.org}</h4>
+            <p className="period">{activeItem.period}</p>
+            <ul>
+              {activeItem.details.map((d, i) => (
+                <li key={i}>{d}</li>
               ))}
+            </ul>
           </div>
         </div>
       </div>
